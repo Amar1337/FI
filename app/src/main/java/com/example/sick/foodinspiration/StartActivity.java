@@ -15,7 +15,7 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_decision);
 
-        Button start = (Button)findViewById(R.id.startbtn);
+        Button start = (Button)findViewById(R.id.buttonstart);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -23,7 +23,7 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
-        Button cookbook = (Button)findViewById(R.id.mycookbookbtn);
+        Button cookbook = (Button)findViewById(R.id.button3);
         cookbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
