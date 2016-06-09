@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +19,7 @@ import java.util.Map;
 /**
  * Created by Sick on 5-6-2016.
  */
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
     protected EditText emailEditText;
     protected EditText passwordEditText;
     protected Button loginButton;
@@ -36,6 +37,7 @@ public class LoginActivity extends Activity {
         loginButton = (Button)findViewById(R.id.loginButton);
 
         final Firebase ref = new Firebase(com.example.sick.foodinspiration.Constants.FIREBASE_URL);
+
 
         signUpTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +91,9 @@ public class LoginActivity extends Activity {
                             AlertDialog dialog = builder.create();
                             dialog.show();
                         }
+
                     });
+
                 }
             }
         });

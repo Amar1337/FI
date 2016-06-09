@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.firebase.client.Firebase;
 
+import at.markushi.ui.CircleButton;
+
 public class MainActivity extends Activity {
 
     // Declaring variables
@@ -26,15 +28,48 @@ public class MainActivity extends Activity {
     PagerAdapter adapter;
     String[] mealname;
     int[] mealpicture;
+    CircleButton imgButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Declare DislikeButton named view
+        imgButton =(CircleButton)findViewById(R.id.view);
+        // Declare LikeButton named viewnew
+        imgButton =(CircleButton) findViewById(R.id.viewnew);
+        // Declare Button for the Cookbook
+        Button btn = (Button) findViewById(R.id.button3);
+
+        imgButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // When clicked change the currentitem to the next item
+                viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+                // Show toast when ImageButton pressed
+                Toast.makeText(getApplicationContext(),"Disliked :(",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        // Set OnClickListener
+        imgButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // When clicked change the currentitem to the next item
+                viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+
+                // Show toast when ImageButton pressed
+                Toast.makeText(getApplicationContext(),"Liked :)",Toast.LENGTH_LONG).show();
+            }
+        });
+
+        // Hardcoded strings for the mealnames
         mealname = new String[] { "Gevulde avocado met ei", "Pasta met spinazie en garnalen", "Griekse aardappelen", "Pasta met spinazie en gorgonzolasaus",
                                 "Zalm spinazie", "Pasta bloemkoolsaus", "Paella met kip en gamba’s", "Zweedse balletjes met aardappelsalade", "Rode curry met runderreepjes", "Tonijnburger met frisse dip" };
 
+        // Hardcoded images for the meals in the viewpager
         mealpicture = new int[] {
                 R.drawable.gevulde_avocados_met_ei,
                 R.drawable.pasta_met_spinazie_en_garnalen,
@@ -55,8 +90,7 @@ public class MainActivity extends Activity {
         // Binds the Adapter to the ViewPager
         viewPager.setAdapter(adapter);
 
-        Button btn = (Button) findViewById(R.id.button3);
-
+        // Create OnClickListener for the CookBookActivity
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,14 +103,6 @@ public class MainActivity extends Activity {
         if (mRef.getAuth() == null) {
             loadLoginView();
         }
-    }
-
-    public void DislikeMethod(View view){
-        Toast.makeText(MainActivity.this, "Dislike :(", Toast.LENGTH_SHORT).show();
-    }
-
-    public void LikeMethod (View view){
-        Toast.makeText(MainActivity.this, "Like :)", Toast.LENGTH_SHORT).show();
     }
 
     private void loadLoginView() {

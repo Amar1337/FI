@@ -5,4 +5,5 @@ package com.example.sick.foodinspiration;
  */
 public class Constants {
     public static final String FIREBASE_URL = "https://food-inspiration.firebaseio.com/";
+
 }
