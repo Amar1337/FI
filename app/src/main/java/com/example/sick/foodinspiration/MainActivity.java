@@ -107,7 +107,7 @@ public class MainActivity extends Activity implements
         if (count == meals.length) {
             count = 0;
         }
-        // Add a card to the swipe view.
+        // Add a card to the swipe view..
         mSwipeView.addCard(cardView, position);
 
         // Create OnClickListener for the CookBookActivity
