@@ -17,12 +17,4 @@
         android:gravity="center"
         android:textSize="20dp" />
 
-    <ImageView
-        android:id="@+id/mealpicture"
-        android:layout_width="529dp"
-        android:layout_height="250dp"
-        android:background="#000000"
-        android:padding="1dp"
-        android:layout_alignParentTop="true" />
-
 </RelativeLayout>

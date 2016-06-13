@@ -1,96 +1,118 @@
 package com.example.sick.foodinspiration;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+
 import com.firebase.client.Firebase;
+import com.rk.lib.view.SwipeView;
 
-import at.markushi.ui.CircleButton;
+public class MainActivity extends Activity implements
+        SwipeView.OnCardSwipedListener {
 
-public class MainActivity extends Activity {
+    private final static int CARDS_MAX_ELEMENTS = 5;
 
-    // Declaring variables
+    private FrameLayout contentLayout;
+    private SwipeView mSwipeView;
     private Firebase mRef;
-    ViewPager viewPager;
-    PagerAdapter adapter;
-    String[] mealname;
-    int[] mealpicture;
-    CircleButton imgButton;
+
+    private int[] meals =                 {
+            R.drawable.gevulde_avocados_met_ei,
+            R.drawable.pasta_met_spinazie_en_garnalen,
+            R.drawable.griekse_aardappelen,
+            R.drawable.pasta_met_spinazie_en_gorgonzolasaus,
+            R.drawable.zalm_spinazie,
+            R.drawable.pasta_bloemkoolsaus,
+            R.drawable.paella,
+            R.drawable.zweedseballen_salade,
+            R.drawable.rode_curry_met_runderreepjes,
+            R.drawable.tonijnburger};
+
+    private int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_swipe_view_demo);
+        contentLayout = (FrameLayout) findViewById(R.id.contentLayout);
 
-        // Declare DislikeButton named view
-        imgButton =(CircleButton)findViewById(R.id.view);
-        // Declare LikeButton named viewnew
-        imgButton =(CircleButton) findViewById(R.id.viewnew);
-        // Declare Button for the Cookbook
-        Button btn = (Button) findViewById(R.id.button3);
+        // Add the swipe view
+        mSwipeView = new SwipeView(this, R.id.imgSwipeLike, R.id.imgSwipeNope,
+                this);
+        contentLayout.addView(mSwipeView);
 
-        imgButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // When clicked change the currentitem to the next item
-                viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
-                // Show toast when ImageButton pressed
-                Toast.makeText(getApplicationContext(),"Disliked :(",Toast.LENGTH_LONG).show();
+        // Adding the cards initially with the maximum limits of cards.
+        for (int i = 0; i < CARDS_MAX_ELEMENTS; i++) {
+            addCard(i);
+        }
+    }
+
+    /**
+     * On clicked view.
+     *
+     * @param clickedView
+     *            the clicked view
+     */
+    public void onClickedView(View clickedView) {
+        switch (clickedView.getId()) {
+            case R.id.imgDisLike: {
+                mSwipeView.dislikeCard();
+                break;
             }
-        });
 
-        // Set OnClickListener
-        imgButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // When clicked change the currentitem to the next item
-                viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
-
-                // Show toast when ImageButton pressed
-                Toast.makeText(getApplicationContext(),"Liked :)",Toast.LENGTH_LONG).show();
+            case R.id.imgLike: {
+                mSwipeView.likeCard();
+                break;
             }
-        });
+            default:
+                break;
+        }
+    }
 
-        // Hardcoded strings for the mealnames
-        mealname = new String[] { "Gevulde avocado met ei", "Pasta met spinazie en garnalen", "Griekse aardappelen", "Pasta met spinazie en gorgonzolasaus",
-                                "Zalm spinazie", "Pasta bloemkoolsaus", "Paella met kip en gamba’s", "Zweedse balletjes met aardappelsalade", "Rode curry met runderreepjes", "Tonijnburger met frisse dip" };
+    @Override
+    public void onLikes() {
+        System.out.println("An Card removed");
+        // Add a card if you needed after any previous card swiped
+        addCard(0);
+    }
 
-        // Hardcoded images for the meals in the viewpager
-        mealpicture = new int[] {
-                R.drawable.gevulde_avocados_met_ei,
-                R.drawable.pasta_met_spinazie_en_garnalen,
-                R.drawable.griekse_aardappelen,
-                R.drawable.pasta_met_spinazie_en_gorgonzolasaus,
-                R.drawable.zalm_spinazie,
-                R.drawable.pasta_bloemkoolsaus,
-                R.drawable.paella,
-                R.drawable.zweedseballen_salade,
-                R.drawable.rode_curry_met_runderreepjes,
-                R.drawable.tonijnburger
-        };
+    @Override
+    public void onDisLikes() {
+        System.out.println("An Card removed");
+        // Add a card if you needed after any previous card swiped
+        addCard(0);
+    }
 
-        // Locate the ViewPager in viewpager_main.xml
-        viewPager = (ViewPager) findViewById(R.id.pager);
-        // Pass results to ViewPagerAdapter Class
-        adapter = new ViewPagerAdapter(MainActivity.this, mealname, mealpicture);
-        // Binds the Adapter to the ViewPager
-        viewPager.setAdapter(adapter);
+    @Override
+    public void onSingleTap() {
+
+    }
+
+    /**
+     * Adds the card to the swipe.
+     */
+
+    private void addCard(int position) {
+        final View cardView = LayoutInflater.from(this).inflate(
+                R.layout.item_swipe_view, null);
+        final ImageView imgBike = (ImageView) cardView
+                .findViewById(R.id.imgMeals);
+        imgBike.setImageResource(meals[count]);
+        count++;
+        if (count == meals.length) {
+            count = 0;
+        }
+        // Add a card to the swipe view.
+        mSwipeView.addCard(cardView, position);
 
         // Create OnClickListener for the CookBookActivity
+        // Declare Button for the Cookbook
+        Button btn = (Button) findViewById(R.id.button3);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

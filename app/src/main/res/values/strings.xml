@@ -25,4 +25,5 @@
     <string name="login_service">Login service</string>
     <string name="user_id">User ID</string>
     <string name="edittext_warning">Note: Changes made in the text boxes will not be applied.</string>
+    <string name="action_image">Action Image</string>
 </resources>
