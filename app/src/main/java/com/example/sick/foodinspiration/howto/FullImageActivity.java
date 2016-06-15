@@ -1,13 +1,13 @@
-package com.example.sick.foodinspiration;
+package com.example.sick.foodinspiration.howto;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
-import java.util.List;
+import com.example.sick.foodinspiration.cookbook.ImageAdapter;
+import com.example.sick.foodinspiration.R;
 
 public class FullImageActivity extends ListActivity {
 

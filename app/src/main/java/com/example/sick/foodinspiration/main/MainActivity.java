@@ -1,4 +1,4 @@
-package com.example.sick.foodinspiration;
+package com.example.sick.foodinspiration.main;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.example.sick.foodinspiration.cookbook.CookbookActivity;
+import com.example.sick.foodinspiration.login.Constants;
+import com.example.sick.foodinspiration.login.LoginActivity;
+import com.example.sick.foodinspiration.R;
 import com.firebase.client.Firebase;
 import com.rk.lib.view.SwipeView;
 
@@ -20,7 +24,8 @@ public class MainActivity extends Activity implements
     private FrameLayout contentLayout;
     private SwipeView mSwipeView;
     private Firebase mRef;
-
+    public ImageView imageview;
+    public ImageView imageLogo;
     private int[] meals =                 {
             R.drawable.gevulde_avocados_met_ei,
             R.drawable.pasta_met_spinazie_en_garnalen,
@@ -40,16 +45,21 @@ public class MainActivity extends Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_view_demo);
         contentLayout = (FrameLayout) findViewById(R.id.contentLayout);
+        imageview = (ImageView) findViewById(R.id.imgMeals);
+        imageLogo = (ImageView) findViewById(R.id.imageView3);
+
 
         // Add the swipe view
         mSwipeView = new SwipeView(this, R.id.imgSwipeLike, R.id.imgSwipeNope,
                 this);
         contentLayout.addView(mSwipeView);
 
+
         // Adding the cards initially with the maximum limits of cards.
         for (int i = 0; i < CARDS_MAX_ELEMENTS; i++) {
             addCard(i);
         }
+
     }
 
     /**
@@ -66,11 +76,36 @@ public class MainActivity extends Activity implements
             }
 
             case R.id.imgLike: {
+
+                //SAVE IN SD CARD//
+
+//                imageview.setDrawingCacheEnabled(true);
+//                imageview.buildDrawingCache();
+//                Bitmap bm = imageview.getDrawingCache();
+//                OutputStream fOut = null;
+//                Uri outputFileUri;
+//                try {
+//                    File root = new File(Environment.getExternalStorageDirectory()
+//                            + File.separator + "folder_name" + File.separator);
+//                    root.mkdirs();
+//                    File sdImageMainDirectory = new File(root, "myPicName.jpg");
+//                    outputFileUri = Uri.fromFile(sdImageMainDirectory);
+//                    fOut = new FileOutputStream(sdImageMainDirectory);
+//                } catch (Exception e) {
+//                    Toast.makeText(this, "Error occured. Please try again later.",
+//                            Toast.LENGTH_SHORT).show();
+//                }
+//
+//                try {
+//                    bm.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+//                    fOut.flush();
+//                    fOut.close();
+//                } catch (Exception e) {
+//
+//                }
                 mSwipeView.likeCard();
                 break;
             }
-            default:
-                break;
         }
     }
 
@@ -92,7 +127,6 @@ public class MainActivity extends Activity implements
     public void onSingleTap() {
 
     }
-
     /**
      * Adds the card to the swipe.
      */
@@ -100,9 +134,9 @@ public class MainActivity extends Activity implements
     private void addCard(int position) {
         final View cardView = LayoutInflater.from(this).inflate(
                 R.layout.item_swipe_view, null);
-        final ImageView imgBike = (ImageView) cardView
+        final ImageView imgMeal = (ImageView) cardView
                 .findViewById(R.id.imgMeals);
-        imgBike.setImageResource(meals[count]);
+        imgMeal.setImageResource(meals[count]);
         count++;
         if (count == meals.length) {
             count = 0;
@@ -121,7 +155,7 @@ public class MainActivity extends Activity implements
         });
 
         // Check Authentication
-        mRef = new Firebase(com.example.sick.foodinspiration.Constants.FIREBASE_URL);
+        mRef = new Firebase(Constants.FIREBASE_URL);
         if (mRef.getAuth() == null) {
             loadLoginView();
         }
@@ -133,4 +167,6 @@ public class MainActivity extends Activity implements
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
+
 }

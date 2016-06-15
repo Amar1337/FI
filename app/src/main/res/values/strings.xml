@@ -26,4 +26,5 @@
     <string name="user_id">User ID</string>
     <string name="edittext_warning">Note: Changes made in the text boxes will not be applied.</string>
     <string name="action_image">Action Image</string>
+    <string name="facebook_app_id">719750678164064</string>
 </resources>

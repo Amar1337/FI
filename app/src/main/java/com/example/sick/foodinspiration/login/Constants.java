@@ -1,4 +1,4 @@
-package com.example.sick.foodinspiration;
+package com.example.sick.foodinspiration.login;
 
 /**
  * Created by Sick on 5-6-2016.

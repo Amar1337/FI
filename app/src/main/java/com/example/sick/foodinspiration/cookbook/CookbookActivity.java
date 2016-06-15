@@ -1,4 +1,4 @@
-package com.example.sick.foodinspiration;
+package com.example.sick.foodinspiration.cookbook;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.Toast;
+
+import com.example.sick.foodinspiration.howto.FullImageActivity;
+import com.example.sick.foodinspiration.R;
 
 public class CookbookActivity extends Activity {
 
@@ -16,7 +20,6 @@ public class CookbookActivity extends Activity {
         setContentView(R.layout.activity_cookbook);
 
         GridView gridView = (GridView) findViewById(R.id.gridView);
-
         // Instance of ImageAdapter Class
         gridView.setAdapter(new ImageAdapter(this));
 
@@ -33,6 +36,15 @@ public class CookbookActivity extends Activity {
                 // passing array index
                 i.putExtra("id", position);
                 startActivity(i);
+            }
+        });
+        gridView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                           int position, long id) {
+                Toast.makeText(CookbookActivity.this, "You've long clicked", Toast.LENGTH_SHORT).show();
+                return true;
             }
         });
     }
