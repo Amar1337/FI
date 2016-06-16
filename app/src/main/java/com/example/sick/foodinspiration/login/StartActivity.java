@@ -1,12 +1,12 @@
 package com.example.sick.foodinspiration.login;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.sick.foodinspiration.R;
 import com.example.sick.foodinspiration.cookbook.CookbookActivity;
 import com.example.sick.foodinspiration.main.MainActivity;
@@ -41,6 +40,8 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Add  Firebase Reference URL
+        myFirebaseRef = new Firebase("https://food-inspiration.firebaseio.com/");
         Button start = (Button)findViewById(R.id.buttonstart);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,11 +60,8 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        //Creates a reference for  your Firebase database
-        //Add YOUR Firebase Reference URL instead of the following URL
-        myFirebaseRef = new Firebase("https://food-inspiration.firebaseio.com/");
 
     }
 
@@ -168,6 +166,3 @@ public class StartActivity extends AppCompatActivity {
     }
 
 }
-
-
-

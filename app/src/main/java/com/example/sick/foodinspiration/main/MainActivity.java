@@ -2,19 +2,26 @@ package com.example.sick.foodinspiration.main;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-
+import android.widget.Toast;
 import com.example.sick.foodinspiration.cookbook.CookbookActivity;
 import com.example.sick.foodinspiration.login.Constants;
 import com.example.sick.foodinspiration.login.LoginActivity;
 import com.example.sick.foodinspiration.R;
 import com.firebase.client.Firebase;
 import com.rk.lib.view.SwipeView;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 public class MainActivity extends Activity implements
         SwipeView.OnCardSwipedListener {
@@ -24,19 +31,15 @@ public class MainActivity extends Activity implements
     private FrameLayout contentLayout;
     private SwipeView mSwipeView;
     private Firebase mRef;
-    public ImageView imageview;
     public ImageView imageLogo;
+    public ImageView imageview;
+
     private int[] meals =                 {
             R.drawable.gevulde_avocados_met_ei,
             R.drawable.pasta_met_spinazie_en_garnalen,
             R.drawable.griekse_aardappelen,
             R.drawable.pasta_met_spinazie_en_gorgonzolasaus,
-            R.drawable.zalm_spinazie,
-            R.drawable.pasta_bloemkoolsaus,
-            R.drawable.paella,
-            R.drawable.zweedseballen_salade,
-            R.drawable.rode_curry_met_runderreepjes,
-            R.drawable.tonijnburger};
+            R.drawable.zalm_spinazie};
 
     private int count = 0;
 
@@ -45,9 +48,8 @@ public class MainActivity extends Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_view_demo);
         contentLayout = (FrameLayout) findViewById(R.id.contentLayout);
-        imageview = (ImageView) findViewById(R.id.imgMeals);
         imageLogo = (ImageView) findViewById(R.id.imageView3);
-
+        imageview = (ImageView) findViewById(R.id.imageView);
 
         // Add the swipe view
         mSwipeView = new SwipeView(this, R.id.imgSwipeLike, R.id.imgSwipeNope,
@@ -76,33 +78,6 @@ public class MainActivity extends Activity implements
             }
 
             case R.id.imgLike: {
-
-                //SAVE IN SD CARD//
-
-//                imageview.setDrawingCacheEnabled(true);
-//                imageview.buildDrawingCache();
-//                Bitmap bm = imageview.getDrawingCache();
-//                OutputStream fOut = null;
-//                Uri outputFileUri;
-//                try {
-//                    File root = new File(Environment.getExternalStorageDirectory()
-//                            + File.separator + "folder_name" + File.separator);
-//                    root.mkdirs();
-//                    File sdImageMainDirectory = new File(root, "myPicName.jpg");
-//                    outputFileUri = Uri.fromFile(sdImageMainDirectory);
-//                    fOut = new FileOutputStream(sdImageMainDirectory);
-//                } catch (Exception e) {
-//                    Toast.makeText(this, "Error occured. Please try again later.",
-//                            Toast.LENGTH_SHORT).show();
-//                }
-//
-//                try {
-//                    bm.compress(Bitmap.CompressFormat.PNG, 100, fOut);
-//                    fOut.flush();
-//                    fOut.close();
-//                } catch (Exception e) {
-//
-//                }
                 mSwipeView.likeCard();
                 break;
             }
@@ -111,6 +86,30 @@ public class MainActivity extends Activity implements
 
     @Override
     public void onLikes() {
+        imageview.setDrawingCacheEnabled(true); //Add this line.
+        imageview.buildDrawingCache();
+        Bitmap bm=imageview.getDrawingCache();
+
+        OutputStream fOut = null;
+        Uri outputFileUri;
+        try {
+            File root = new File(Environment.getExternalStorageDirectory()
+                    + File.separator + "folder_name" + File.separator);
+            root.mkdirs();
+            File sdImageMainDirectory = new File(root, "myPicName.jpg");
+            outputFileUri = Uri.fromFile(sdImageMainDirectory);
+            fOut = new FileOutputStream(sdImageMainDirectory);
+            MediaScannerConnection.scanFile(this, new String[] { sdImageMainDirectory.getAbsolutePath() }, null, null);
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Error occured. Please try again later.",
+                    Toast.LENGTH_SHORT).show();
+        }
+        try {
+            bm.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+            fOut.flush();
+            fOut.close();
+        } catch (Exception e){}
         System.out.println("An Card removed");
         // Add a card if you needed after any previous card swiped
         addCard(0);
