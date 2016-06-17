@@ -34,8 +34,9 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        
         //Creates a reference for  your Firebase database
-        //Add YOUR Firebase Reference URL instead of the following URL
+        //Add Firebase Reference URL
         myFirebaseRef =  new Firebase("https://food-inspiration.firebaseio.com/");
 
     }
