@@ -15,7 +15,7 @@ import com.firebase.client.FirebaseError;
 import java.util.Map;
 
 /**
- * Created by AndroidBash on 11/05/16
+ * Created by Amar on 07/06/16
  */
 
 public class SignUpActivity extends AppCompatActivity {
