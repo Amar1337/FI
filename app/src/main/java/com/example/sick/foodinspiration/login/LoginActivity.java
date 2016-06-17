@@ -24,21 +24,25 @@ import com.firebase.client.FirebaseError;
 import java.util.Arrays;
 
 public class LoginActivity extends AppCompatActivity {
-
+    
+    // Declaring variables
     private Firebase myFirebaseRef;
     public User user;
     private EditText email;
     private EditText password;
     private ProgressBar progressBar;
+    
     //FaceBook
     private CallbackManager callbackManager;
-    //
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_login);
+        
+        // Initialize toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -46,15 +50,19 @@ public class LoginActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            
+            // This will be called instead of FacebookCallback.onCancel() if any of the following conditions are true
             @Override
             public void onSuccess(LoginResult loginResult) {
                 saveFacebookLoginData("facebook", loginResult.getAccessToken());
             }
-
+            
+            // This will becalled when the dialog is canceled
             @Override
             public void onCancel() {
             }
 
+            // This will be called when a network or other error is encountered while logging in
             @Override
             public void onError(FacebookException error) {
                 Toast.makeText(getApplicationContext(), "" + error.getMessage(), Toast.LENGTH_LONG).show();
@@ -62,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         });
         //
 
-        //Add YOUR Firebase Reference URL instead of the following URL
+        //Add Firebase Reference URL
         myFirebaseRef = new Firebase("https://food-inspiration.firebaseio.com/");
 
     }
@@ -70,6 +78,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        
+        // Initialize the following
         email = (EditText) findViewById(R.id.edit_text_email_id);
         password = (EditText) findViewById(R.id.edit_text_password);
         progressBar = (ProgressBar) findViewById(R.id.progress_bar_login);
@@ -82,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
-    //
+    
 
     protected void setUpUser() {
         user = new User();
@@ -115,7 +125,6 @@ public class LoginActivity extends AppCompatActivity {
     private void checkUserLogin() {
         //getAuth Returns the current authentication state of the Firebase client. If the client is unauthenticated, this method will return null.
         // Otherwise, the return value will be an object containing at least the fields such as uid,provider,token,expires,auth
-        // https://www.firebase.com/docs/web/api/firebase/getauth.html,
         if (myFirebaseRef.getAuth() != null) {
             Intent intent = new Intent(getApplicationContext(), StartActivity.class);
             String uid = myFirebaseRef.getAuth().getUid();
