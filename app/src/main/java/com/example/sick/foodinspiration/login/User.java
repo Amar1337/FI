@@ -3,7 +3,7 @@ package com.example.sick.foodinspiration.login;
 import com.firebase.client.Firebase;
 
 /**
- * Created by AndroidBash on 11/05/16
+ * Created by Amar Skenderovic on 08/06/16
  */
 public class User {
 
@@ -60,7 +60,7 @@ public class User {
     }
 
     public void saveUser() {
-        //Add YOUR Firebase Reference URL instead of the following URL
+        // Add Firebase Reference URL
         Firebase myFirebaseRef = new Firebase("https://food-inspiration.firebaseio.com/");
         myFirebaseRef = myFirebaseRef.child("users").child(getId());
         myFirebaseRef.setValue(this);
