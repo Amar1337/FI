@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
-import com.example.sick.foodinspiration.cookbook.ImageAdapter;
 import com.example.sick.foodinspiration.R;
 
 public class FullImageActivity extends ListActivity {
@@ -35,6 +34,7 @@ public class FullImageActivity extends ListActivity {
 
         ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
         imageView.setImageResource(imageAdapter.mThumbIds[position]);
+
     }
 
 }

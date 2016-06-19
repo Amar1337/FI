@@ -3,7 +3,11 @@ package com.example.sick.foodinspiration.login;
 import com.firebase.client.Firebase;
 
 /**
- * Created by AndroidBash on 11/05/16
+ * Created by Sick on 5-6-2016.
+ */
+
+/* A user class that is created for receiving string details and updating the firebase
+ * database with these strings.
  */
 public class User {
 
@@ -60,7 +64,8 @@ public class User {
     }
 
     public void saveUser() {
-        //Add YOUR Firebase Reference URL instead of the following URL
+
+        // Added Firebase Reference URL
         Firebase myFirebaseRef = new Firebase("https://food-inspiration.firebaseio.com/");
         myFirebaseRef = myFirebaseRef.child("users").child(getId());
         myFirebaseRef.setValue(this);

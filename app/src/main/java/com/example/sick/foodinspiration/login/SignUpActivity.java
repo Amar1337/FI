@@ -2,24 +2,26 @@ package com.example.sick.foodinspiration.login;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.example.sick.foodinspiration.R;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-
 import java.util.Map;
 
 /**
- * Created by AndroidBash on 11/05/16
+ * Created by Sick on 5-6-2016.
  */
 
+/* The SignUpActivity asks the user for input of account details. If the user wants to use the app, they will have the option to
+ * create a new account. The Sign up works with the Firebase API, this means all the details of the account will be displayed in
+ * the Firebase database.
+ */
 public class SignUpActivity extends AppCompatActivity {
 
+    // Declaring variables
     private Firebase myFirebaseRef;
     private User user;
     private EditText name;
@@ -32,14 +34,13 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        //Creates a reference for  your Firebase database
-        //Add YOUR Firebase Reference URL instead of the following URL
+
+        // Add Firebase Reference URL which will be used in combination with the SignUpActivity for saving users (database)
         myFirebaseRef =  new Firebase("https://food-inspiration.firebaseio.com/");
 
     }
 
+    // Initialize the following when the user is going to start with account details
     @Override
     protected void onStart() {
         super.onStart();
@@ -51,22 +52,27 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
 
+    // Receiving user input
     protected void setUpUser(){
-            user = new User();
-            user.setName(name.getText().toString());
-            user.setPhoneNumber(phoneNumber.getText().toString());
-            user.setEmail(email.getText().toString());
-            user.setPassword(password.getText().toString());
+        user = new User();
+        user.setName(name.getText().toString());
+        user.setPhoneNumber(phoneNumber.getText().toString());
+        user.setEmail(email.getText().toString());
+        user.setPassword(password.getText().toString());
     }
 
+    // Method for when all the details are filled in and the user wants to sign up
     public void onSignUpClicked(View view){
         progressBar.setVisibility(View.VISIBLE);
+
+        // Using received input from user
         setUpUser();
-        //createUser method creates a new user account with the given email and password.
-        //Parameters are :
-        // email - The email for the account to be created
-        // password - The password for the account to be created
-        // handler - A handler which is called with the result of the operation
+
+        // CreateUser method creates a new user account with the given email and password
+        // Parameters are :
+        // Email - The email for the account to be created
+        // Password - The password for the account to be created
+        // Handler - A handler which is called with the result of the operation
         myFirebaseRef.createUser(
                 user.getEmail(),
                 user.getPassword(),
@@ -82,6 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
                         finish();
                     }
 
+                    // Authenticated failed with error firebaseError
                     @Override
                     public void onError(FirebaseError firebaseError) {
                         Toast.makeText(getApplicationContext(), "" + firebaseError.getMessage(), Toast.LENGTH_LONG).show();

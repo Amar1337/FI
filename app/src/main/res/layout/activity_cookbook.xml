@@ -13,16 +13,20 @@
         android:textSize="40dp"
         android:layout_marginTop="5dp" />
 
+    <Button
+        android:id="@+id/reload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reload"/>
     <GridView
         android:id="@+id/gridView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:numColumns="2"
         android:columnWidth="90dp"
-        android:horizontalSpacing="5dp"
-        android:verticalSpacing="30dp"
-        android:gravity="center"
-        android:stretchMode="columnWidth" >
-    </GridView>
+        android:numColumns="2"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"/>
 
 </LinearLayout>

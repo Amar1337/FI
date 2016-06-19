@@ -6,12 +6,13 @@
 
     <ImageView
         android:id="@+id/imgMeals"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="340dp"
+        android:layout_height="220dp"
         android:layout_centerInParent="true"
         android:contentDescription="@string/action_image"
         android:src="@drawable/chevapcici"
-        android:background="#f4f2f2" />
+        android:background="#f4f2f2"
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/imgSwipeLike"
@@ -21,7 +22,8 @@
         android:layout_centerVertical="true"
         android:contentDescription="@string/action_image"
         android:src="@drawable/img_swipe_like"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:alpha="1.5"/>
 
     <ImageView
         android:id="@+id/imgSwipeNope"

@@ -1,4 +1,4 @@
-package com.example.sick.foodinspiration.cookbook;
+package com.example.sick.foodinspiration.howto;
 
 import android.content.Context;
 import android.view.View;
@@ -9,6 +9,9 @@ import android.widget.ImageView;
 
 import com.example.sick.foodinspiration.R;
 
+/**
+ * Created by Sick on 19-6-2016.
+ */
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
 

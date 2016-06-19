@@ -1,6 +1,5 @@
 package com.example.sick.foodinspiration.login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -21,27 +20,41 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
-
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * Created by Sick on 5-6-2016.
+ */
+
+/* The StartActivity is the activity where the user can decide wether to immediatly start with the MainActivity, to
+ * continue to the CookbookActivity or to Log out. But there is also happening allot on the background, after the user is logged in
+ * there will appear a welcome message with the users registered/facebook name with a cool added thumbnail picture of their facebook
+ * profile (if they're logged in with facebook that is).
+ */
 public class StartActivity extends AppCompatActivity {
 
+    // Declaring Variables
     Firebase myFirebaseRef;
     TextView name;
     TextView welcomeText;
-    Button changeButton;
-    Button revertButton;
     ImageView profilePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Firebase.setAndroidContext(this);
+
+        // Firebase Reference URL to maintain a valid authentication
+        myFirebaseRef = new Firebase("https://food-inspiration.firebaseio.com/");
         setContentView(R.layout.activity_main);
 
-        // Add  Firebase Reference URL
-        myFirebaseRef = new Firebase("https://food-inspiration.firebaseio.com/");
+        // Implementing the toolbar so the user has the option to logout
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // OnclickListener for going to the MainActivity
         Button start = (Button)findViewById(R.id.buttonstart);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +64,7 @@ public class StartActivity extends AppCompatActivity {
             }
         });
 
+        // OnclickListener for going to the CookbookActivity
         Button cookbook = (Button)findViewById(R.id.buttoncookbook);
         cookbook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,53 +73,58 @@ public class StartActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
     }
+
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        // Initialization for the users name, welcometext and profile picture
         name = (TextView) findViewById(R.id.text_view_name);
         welcomeText = (TextView) findViewById(R.id.text_view_welcome);
         profilePicture=(ImageView)findViewById(R.id.profile_picture);
-        //Get the uid for the currently logged in User from intent data passed to this activity
+
+        // Get the uid for the currently logged in User from intent data passed to this activity
         String uid = getIntent().getExtras().getString("user_id");
 
+        // Getting the url of the facebook profile picture
         String imageUrl = getIntent().getExtras().getString("profile_picture");
         new ImageLoadTask(imageUrl,profilePicture).execute();
 
-        //Reffering to the name of the User who has logged in currently and adding a valueChangeListener
+        // Referring to the name of the User who has logged in currently and adding a valueChangeListener
         myFirebaseRef.child("users").child(uid).child("name").addValueEventListener(new ValueEventListener() {
-            //onDataChange is called every time the name of the User changes in your Firebase Database
+
+            // onDataChange is called every time the name of the User changes in the Firebase Database
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //Inside onDataChange we can get the data as an Object from the dataSnapshot
-                //getValue returns an Object. We can specify the type by passing the type expected as a parameter
+
+                // Inside onDataChange we can get the data as an Object from the dataSnapshot
+                // getValue returns an Object and parameter added as type expected
                 String data = dataSnapshot.getValue(String.class);
                 name.setText("Hello "+data+", ");
             }
-            //onCancelled is called in case of any error
+            // onCancelled is called in case of any error
             @Override
             public void onCancelled(FirebaseError firebaseError) {
                 Toast.makeText(getApplicationContext(), "" + firebaseError.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
-        //A firebase reference to the welcomeText can be created in following ways :
+        // A firebase reference to the welcomeText
         myFirebaseRef.child("welcomeText").addValueEventListener(new ValueEventListener() {
-            //onDataChange is called every time the data changes in your Firebase Database
+
+            // onDataChange is called every time the data changes in the Firebase Database
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //Inside onDataChange we can get the data as an Object from the dataSnapshot
-                //getValue returns an Object. We can specify the type by passing the type expected as a parameter
+
+                // Inside onDataChange we get the data as an Object from the dataSnapshot
+                // getValue returns an Object. The type is specified by passing the type expected as a parameter
                 String data = dataSnapshot.getValue(String.class);
                 welcomeText.setText(data);
             }
 
-            //onCancelled is called in case of any error
+            // onCancelled is called in case of any error
             @Override
             public void onCancelled(FirebaseError firebaseError) {
                 Toast.makeText(getApplicationContext(), "" + firebaseError.getMessage(), Toast.LENGTH_LONG).show();
@@ -113,16 +132,19 @@ public class StartActivity extends AppCompatActivity {
         });
     }
 
+    // Menu inflater added for logging out
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    // Logout option added
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
+        // If the user wants to logout
         if (id == R.id.action_logout) {
             myFirebaseRef.unauth();
             finish();
@@ -131,16 +153,23 @@ public class StartActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /* A class created for getting the facebook profile picture and displaying it
+     * at the StartActivity.
+     */
     public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
 
+        // Declaring variables
         private String url;
         private ImageView imageView;
 
+        // Load task from a certain url and imageview
         public ImageLoadTask(String url, ImageView imageView) {
             this.url = url;
             this.imageView = imageView;
         }
 
+        // URL object using void parameters, connecting to it, and using Android’s BitmapFactory class to decode the input stream.
+        // The result is the desired Bitmap object
         @Override
         protected Bitmap doInBackground(Void... params) {
             try {
@@ -158,11 +187,11 @@ public class StartActivity extends AppCompatActivity {
             return null;
         }
 
+        // The result
         @Override
         protected void onPostExecute(Bitmap result) {
             super.onPostExecute(result);
             imageView.setImageBitmap(result);
         }
     }
-
 }

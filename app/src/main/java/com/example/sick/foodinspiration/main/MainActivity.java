@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -23,88 +22,121 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
-public class MainActivity extends Activity implements
-        SwipeView.OnCardSwipedListener {
+/**
+ * Created by Sick on 5-6-2016.
+ */
 
+/* The MainActivity is the activity that shows the basic principle of Tinder. You can swipe to the left to dislike and
+ * to the right to like a meal. But you also have the option to dislike and like via clicking on buttons (imageviews to be more precise)
+ * The liked images get converted into bitmap and then saved on your phone. I chose for this option because the images are hardcoded.
+ * It wasn't possible to get a API for mealpictures, ingredients and how-to. So I had to do it like this.
+ * The images are getting retrieved in the next Activity called the CookbookActivity where all the "matches" are stored.
+ */
+public class MainActivity extends Activity implements SwipeView.OnCardSwipedListener {
+
+    // Declaring variables
     private final static int CARDS_MAX_ELEMENTS = 5;
-
     private FrameLayout contentLayout;
     private SwipeView mSwipeView;
     private Firebase mRef;
     public ImageView imageLogo;
     public ImageView imageview;
 
-    private int[] meals =                 {
+    // Creating array of meals, getting them from the drawable folder
+    private int[] meals = {
             R.drawable.gevulde_avocados_met_ei,
             R.drawable.pasta_met_spinazie_en_garnalen,
             R.drawable.griekse_aardappelen,
             R.drawable.pasta_met_spinazie_en_gorgonzolasaus,
-            R.drawable.zalm_spinazie};
+            R.drawable.zalm_spinazie,
+            R.drawable.rode_curry_met_runderreepjes,
+            R.drawable.tonijnburger,
+            R.drawable.zweedseballen_salade,
+            R.drawable.pasta_bloemkoolsaus,
+            R.drawable.paella
+    };
 
+    // Declaring a counter for the next method
     private int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe_view_demo);
+
+        // Initialization for the logo that will be displayed as well as the meals
         contentLayout = (FrameLayout) findViewById(R.id.contentLayout);
         imageLogo = (ImageView) findViewById(R.id.imageView3);
-        imageview = (ImageView) findViewById(R.id.imageView);
 
         // Add the swipe view
-        mSwipeView = new SwipeView(this, R.id.imgSwipeLike, R.id.imgSwipeNope,
-                this);
+        mSwipeView = new SwipeView(this, R.id.imgSwipeLike, R.id.imgSwipeNope, this);
         contentLayout.addView(mSwipeView);
-
 
         // Adding the cards initially with the maximum limits of cards.
         for (int i = 0; i < CARDS_MAX_ELEMENTS; i++) {
             addCard(i);
         }
-
     }
 
-    /**
-     * On clicked view.
-     *
-     * @param clickedView
-     *            the clicked view
-     */
+    // Method for handling the onclick of like and dislike
     public void onClickedView(View clickedView) {
         switch (clickedView.getId()) {
+
+            // If the imageview of dislike is clicked
             case R.id.imgDisLike: {
+                // The imageview in the contentlayout will be swiped to the left
                 mSwipeView.dislikeCard();
                 break;
             }
 
+            // If the imageview of like is clicked
             case R.id.imgLike: {
+                // The imageview in the contentlayout will be swiped to the right
                 mSwipeView.likeCard();
                 break;
             }
         }
     }
 
+    // Method for when a picture is being liked as well as swiped to the right
     @Override
     public void onLikes() {
-        imageview.setDrawingCacheEnabled(true); //Add this line.
-        imageview.buildDrawingCache();
-        Bitmap bm=imageview.getDrawingCache();
+
+        // Sets the drawingCache enabled
+        contentLayout.setDrawingCacheEnabled(true);
+
+        // Calling this method is equivalent to calling buildDrawingCache(false).
+        contentLayout.buildDrawingCache();
+
+        // Getting the image in contentlayout to bitmap
+        Bitmap bm=contentLayout.getDrawingCache();
 
         OutputStream fOut = null;
-        Uri outputFileUri;
         try {
+            // Save on my sd card
             File root = new File(Environment.getExternalStorageDirectory()
-                    + File.separator + "folder_name" + File.separator);
+                    // Making a folder name Food Inspiration
+                    + File.separator + "Food Inspiration" + File.separator);
             root.mkdirs();
-            File sdImageMainDirectory = new File(root, "myPicName.jpg");
-            outputFileUri = Uri.fromFile(sdImageMainDirectory);
+            File sdImageMainDirectory = null;
+
+            // Loop for having a different name for every image
+            int i = 0;
+            do {
+                sdImageMainDirectory = new File(root, "pic-" + i + ".png");
+                i++;
+            } while (sdImageMainDirectory.exists());
             fOut = new FileOutputStream(sdImageMainDirectory);
+
+            // Updates the gallery of your phone with the folder and the "liked" images in it
             MediaScannerConnection.scanFile(this, new String[] { sdImageMainDirectory.getAbsolutePath() }, null, null);
 
+            // If something goes wrong
         } catch (Exception e) {
             Toast.makeText(this, "Error occured. Please try again later.",
                     Toast.LENGTH_SHORT).show();
         }
+        // Compresses the actual bitmap image
         try {
             bm.compress(Bitmap.CompressFormat.PNG, 100, fOut);
             fOut.flush();
@@ -115,6 +147,7 @@ public class MainActivity extends Activity implements
         addCard(0);
     }
 
+    // Method if image Disliked the card goes to the left
     @Override
     public void onDisLikes() {
         System.out.println("An Card removed");
@@ -126,10 +159,8 @@ public class MainActivity extends Activity implements
     public void onSingleTap() {
 
     }
-    /**
-     * Adds the card to the swipe.
-     */
 
+    // Adds the card to the swipe.
     private void addCard(int position) {
         final View cardView = LayoutInflater.from(this).inflate(
                 R.layout.item_swipe_view, null);
@@ -140,7 +171,8 @@ public class MainActivity extends Activity implements
         if (count == meals.length) {
             count = 0;
         }
-        // Add a card to the swipe view..
+
+        // Add a card to the swipe view
         mSwipeView.addCard(cardView, position);
 
         // Create OnClickListener for the CookBookActivity
@@ -160,12 +192,11 @@ public class MainActivity extends Activity implements
         }
     }
 
+    // Authentication process
     private void loadLoginView() {
         Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
-
-
 }
