@@ -3,7 +3,6 @@ package com.example.sick.foodinspiration.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaScannerConnection;
 import android.os.Bundle;
 import android.os.Environment;
