@@ -23,7 +23,7 @@ import android.widget.Toast;
 import com.example.sick.foodinspiration.R;
 import com.example.sick.foodinspiration.howto.FullImageActivity;
 /**
- * Created by Sick on 19-6-2016.
+ * Created by Sick on 9-6-2016.
  */
 
 /* The CookbookActivity is a gallery made to represent all the likes from the MainActivity. They are being retrieved from the SD card

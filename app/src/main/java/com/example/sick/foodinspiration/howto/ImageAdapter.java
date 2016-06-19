@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import com.example.sick.foodinspiration.R;
 
 /**
- * Created by Sick on 19-6-2016.
+ * Created by Sick on 9-6-2016.
  */
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
