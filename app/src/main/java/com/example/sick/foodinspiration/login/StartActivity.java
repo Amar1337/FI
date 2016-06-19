@@ -31,7 +31,7 @@ import java.net.URL;
 /* The StartActivity is the activity where the user can decide wether to immediatly start with the MainActivity, to
  * continue to the CookbookActivity or to Log out. But there is also happening allot on the background, after the user is logged in
  * there will appear a welcome message with the users registered/facebook name with a cool added thumbnail picture of their facebook
- * profile (if they're logged in with facebook that is).
+ * pro (if they're logged in with facebook that is).
  */
 public class StartActivity extends AppCompatActivity {
 

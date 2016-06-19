@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-
 import com.example.sick.foodinspiration.R;
 
+/* The FullImageActivity takes care of the GridView item after it's been clicked. The user will be able to continue to this activity
+ * and see the ingredients of the meal and how to make this. The ingredients are displayed in a listview with the image of the alongside
+ * it
+ */
 public class FullImageActivity extends ListActivity {
 
     @Override
