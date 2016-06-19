@@ -3,6 +3,7 @@ package com.example.sick.foodinspiration.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.MediaScannerConnection;
 import android.os.Bundle;
 import android.os.Environment;
@@ -21,6 +22,7 @@ import com.rk.lib.view.SwipeView;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+
 
 /**
  * Created by Sick on 5-6-2016.
@@ -105,10 +107,10 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
         // Sets the drawingCache enabled
         contentLayout.setDrawingCacheEnabled(true);
 
-        // Calling this method is equivalent to calling buildDrawingCache(false).
+        // Build a drawing cache (temporary memory).
         contentLayout.buildDrawingCache();
 
-        // Getting the image in contentlayout to bitmap
+        // Getting the image in contentlayout to bitmap from the temporary memory
         Bitmap bm=contentLayout.getDrawingCache();
 
         OutputStream fOut = null;

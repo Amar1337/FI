@@ -161,7 +161,7 @@ public class CookbookActivity extends Activity {
             options.inJustDecodeBounds = false;
             bm = BitmapFactory.decodeFile(path, options);
 
-            // return bitmap
+            // Return bitmap
             return bm;
         }
 
