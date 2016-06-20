@@ -3,14 +3,22 @@ package com.example.sick.foodinspiration.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.Image;
 import android.media.MediaScannerConnection;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 import com.example.sick.foodinspiration.cookbook.CookbookActivity;
 import com.example.sick.foodinspiration.login.Constants;
@@ -19,8 +27,12 @@ import com.example.sick.foodinspiration.R;
 import com.firebase.client.Firebase;
 import com.rk.lib.view.SwipeView;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
+import java.lang.reflect.Field;
+import java.util.Random;
 
 
 /**
@@ -42,6 +54,7 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
     private Firebase mRef;
     public ImageView imageLogo;
     public ImageView imageview;
+    private static final String TAG = "MyActivity";
 
     // Creating array of meals, getting them from the drawable folder
     private int[] meals = {
@@ -106,12 +119,14 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
         // Sets the drawingCache enabled
         contentLayout.setDrawingCacheEnabled(true);
 
-        // Build a drawing cache (temporary memory).
+        // Calling this method is equivalent to calling buildDrawingCache(false).
         contentLayout.buildDrawingCache();
 
         // Getting the image in contentlayout to bitmap from the temporary memory
-        Bitmap bm=contentLayout.getDrawingCache();
-
+        View cardView = mSwipeView.getChildAt(mSwipeView.getChildCount() - 1);
+        ImageView imageView = (ImageView) cardView.findViewById(R.id.imgMeals);
+        BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+        Bitmap bm = drawable.getBitmap();
         OutputStream fOut = null;
         try {
             // Save on my sd card
@@ -129,7 +144,7 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
             } while (sdImageMainDirectory.exists());
             fOut = new FileOutputStream(sdImageMainDirectory);
 
-            // Updates the gallery of your phone with the folder and the "liked" images in it
+                // Updates the gallery of your phone with the folder and the "liked" images in it
             MediaScannerConnection.scanFile(this, new String[] { sdImageMainDirectory.getAbsolutePath() }, null, null);
 
             // If something goes wrong

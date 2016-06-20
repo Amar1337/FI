@@ -34,7 +34,7 @@ public class CookbookActivity extends Activity {
 
     AsyncTaskLoadFiles myAsyncTaskLoadFiles;
 
-    /* Asynctask the get the files that are being save in the sd card
+    /* Asynctask the get the files that are being saved in the sd card
      */
     public class AsyncTaskLoadFiles extends AsyncTask<Void, String, Void> {
 
@@ -208,7 +208,7 @@ public class CookbookActivity extends Activity {
                 myImageAdapter.remove(position);
 
                 // Deletes EVERY image when LongClicked... cant make it delete 1 image
-                for (int i = 0; i < 100; i++){
+                for (int i = 0; i < 50; i++){
 
                     // Trying to delete the LongClicked Image from the SD card
                     String myFile = "/Food Inspiration/" + "pic-" + i + ".png";
