@@ -51,6 +51,7 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
     private final static int CARDS_MAX_ELEMENTS = 5;
     private FrameLayout contentLayout;
     private SwipeView mSwipeView;
+    private View mFocusedView;
     private Firebase mRef;
     public ImageView imageLogo;
     public ImageView imageview;
@@ -105,6 +106,42 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
 
             // If the imageview of like is clicked
             case R.id.imgLike: {
+                View cardView = mSwipeView.getChildAt(mSwipeView.getChildCount() - 1);
+                ImageView imageView = (ImageView) cardView.findViewById(R.id.imgMeals);
+                BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
+                Bitmap bm = drawable.getBitmap();
+
+                OutputStream fOut = null;
+                try {
+                    // Save on my sd card
+                    File root = new File(Environment.getExternalStorageDirectory()
+                            // Making a folder name Food Inspiration
+                            + File.separator + "Food Inspiration" + File.separator);
+                    root.mkdirs();
+                    File sdImageMainDirectory = null;
+
+                    // Loop for having a different name for every image
+                    int i = 0;
+                    do {
+                        sdImageMainDirectory = new File(root, "pic-" + i + ".png");
+                        i++;
+                    } while (sdImageMainDirectory.exists());
+                    fOut = new FileOutputStream(sdImageMainDirectory);
+
+                    // Updates the gallery of your phone with the folder and the "liked" images in it
+                    MediaScannerConnection.scanFile(this, new String[] { sdImageMainDirectory.getAbsolutePath() }, null, null);
+
+                    // If something goes wrong
+                } catch (Exception e) {
+                    Toast.makeText(this, "Error occured. Please try again later.",
+                            Toast.LENGTH_SHORT).show();
+                }
+                // Compresses the actual bitmap image
+                try {
+                    bm.compress(Bitmap.CompressFormat.PNG, 100, fOut);
+                    fOut.flush();
+                    fOut.close();
+                } catch (Exception e){}
                 // The imageview in the contentlayout will be swiped to the right
                 mSwipeView.likeCard();
                 break;
@@ -115,49 +152,6 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
     // Method for when a picture is being liked as well as swiped to the right
     @Override
     public void onLikes() {
-
-        // Sets the drawingCache enabled
-        contentLayout.setDrawingCacheEnabled(true);
-
-        // Calling this method is equivalent to calling buildDrawingCache(false).
-        contentLayout.buildDrawingCache();
-
-        // Getting the image in contentlayout to bitmap from the temporary memory
-        View cardView = mSwipeView.getChildAt(mSwipeView.getChildCount() - 1);
-        ImageView imageView = (ImageView) cardView.findViewById(R.id.imgMeals);
-        BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
-        Bitmap bm = drawable.getBitmap();
-        OutputStream fOut = null;
-        try {
-            // Save on my sd card
-            File root = new File(Environment.getExternalStorageDirectory()
-                    // Making a folder name Food Inspiration
-                    + File.separator + "Food Inspiration" + File.separator);
-            root.mkdirs();
-            File sdImageMainDirectory = null;
-
-            // Loop for having a different name for every image
-            int i = 0;
-            do {
-                sdImageMainDirectory = new File(root, "pic-" + i + ".png");
-                i++;
-            } while (sdImageMainDirectory.exists());
-            fOut = new FileOutputStream(sdImageMainDirectory);
-
-                // Updates the gallery of your phone with the folder and the "liked" images in it
-            MediaScannerConnection.scanFile(this, new String[] { sdImageMainDirectory.getAbsolutePath() }, null, null);
-
-            // If something goes wrong
-        } catch (Exception e) {
-            Toast.makeText(this, "Error occured. Please try again later.",
-                    Toast.LENGTH_SHORT).show();
-        }
-        // Compresses the actual bitmap image
-        try {
-            bm.compress(Bitmap.CompressFormat.PNG, 100, fOut);
-            fOut.flush();
-            fOut.close();
-        } catch (Exception e){}
         System.out.println("An Card removed");
         // Add a card if you needed after any previous card swiped
         addCard(0);

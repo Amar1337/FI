@@ -202,8 +202,7 @@ public class CookbookActivity extends Activity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id) {
-                Toast.makeText(CookbookActivity.this, "You've removed an item", Toast.LENGTH_SHORT).show();
-
+                Toast.makeText(CookbookActivity.this, "" + position, Toast.LENGTH_SHORT).show();
                 // Removes the image from the gridview
                 myImageAdapter.remove(position);
 
@@ -223,7 +222,7 @@ public class CookbookActivity extends Activity {
             }
         });
 
-         // On Click event for Single Gridview Item
+        // On Click event for Single Gridview Item
         gridview.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v,
@@ -248,15 +247,15 @@ public class CookbookActivity extends Activity {
             @Override
             public void onClick(View arg0) {
 
-                    // Cancel the previous running task, if exist.
-                    myAsyncTaskLoadFiles.cancel(true);
+                // Cancel the previous running task, if exist.
+                myAsyncTaskLoadFiles.cancel(true);
 
-                    // New another ImageAdapter, to prevent the adapter have mixed files
-                    myImageAdapter = new ImageAdapter(CookbookActivity.this);
-                    gridview.setAdapter(myImageAdapter);
-                    myAsyncTaskLoadFiles = new AsyncTaskLoadFiles(myImageAdapter);
-                    myAsyncTaskLoadFiles.execute();
-                }
-            });
-        }
+                // New another ImageAdapter, to prevent the adapter have mixed files
+                myImageAdapter = new ImageAdapter(CookbookActivity.this);
+                gridview.setAdapter(myImageAdapter);
+                myAsyncTaskLoadFiles = new AsyncTaskLoadFiles(myImageAdapter);
+                myAsyncTaskLoadFiles.execute();
+            }
+        });
     }
+}
