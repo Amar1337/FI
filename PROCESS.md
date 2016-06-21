@@ -64,13 +64,37 @@ het uiterlijk van het plaatje met een "Like" erop als je naar rechts swiped
 - Daarnaast maak ik ook gebruik van een loop die ervoor zorgt dat je de hele tijd door kan swipen omdat er telkens een card wordt geadd
 - De volgende stap is om ervoor te zorgen dat ik afbeelding kan laten swipen door op een Like of Dislike Button te klikken (dus het zelfde effect als dat je gaat swipen)
 
-# day 10
+# day 10-15
 - Gelukt om de Dislike en Like button te linken aan het swipen door middel van onClickedView
 - Logo toegevoegd aan de MainActivity
 - Ik laat voor nu de MainActivity en ga mij focussen op het inloggen
 - Omdat ik geen Food API heb kunnen regelen, ga ik mij focussen op 2 andere API's die in de app zitten
 - Facebook API en Firebase API ga ik gebruiken voor mijn login en registreren
-- Ik wil ervoor zorgen dat je middels het maken van een nieuw account kan inloggen op mijn app maar ook dat je via facebook kan inloggen
+- Ik wil ervoor zorgen dat je middels het maken van een nieuw account kan inloggen op mijn app maar ook dat je via facebook kan inloggen.
+- Het is gelukt om de Firebase en Facebook API met elkaar samen te laten werken.
+- De user kan nu ook middels Facebook registreren en de database in Firebase zal dit verwerken.
+- Ik ben deze paar dagen voornamelijk bezig geweest met ervoor te zorgen dat afbeelding die geliked worden, worden opgeslagen
+op mijn telefoon en dat ik ze daarna weer op kan halen en ze kan laten zien in de gridview.
+- Hiervoor moest ik ervoor zorgen dat de imageview in de contentlayout gevonden werd en werd opgeslagen.
+- Om de een of andere reden lukte het niet om het bovenste plaatje op te slaan, maar pakt hij telkens een afbeelding erachter.
+- Dit doet die bij zowel op de like button klikken als bij het swipen naar rechts.
+- Hier ben ik 2 dagen mee bezig geweest daarna ben ik overgaan met het opschonen van mijn code en het aanpassen van mijn layout
+- Ik heb ook een opstartscherm toegevoegd die na een bepaalde tijdeenheid weer gaat, waarna je op de loginpagina komt.
 
-# day 11
-- 
+# day 16
+- Heb gevonden dat de onLikes zowel de onclickfunctie bevat als de swipe functie.
+- Ik heb de code geprobeerd toe te passen op de onclickfunctie "case R.id.imgLike" en hier bij wordt de afbeelding gelijk opgeslagen die boven zit.
+- Ik moest hiervoor de imageview in de contentlayout achterhalen en deze omzetten naar een bitmap.
+- Vervolgens in de cookbook activity een adapter aangemaakt die alle afbeelding die op de sd kaart staan laat zien op de gridview
+- Het probleem waar ik nu mee zit is dat de likeclickfunctie werkt dus ook het opslaan, maar dat de swipefunctie de juiste afbeelding niet wilt opslaan. Ik vraag mij af of dit door mij komt of door de Library die ik gebruik.
+
+# day 17
+- Ik ben momenteel gestopt met het proberen te fixen van de swipefunctie waarbij afbeeldingen worden opgeslagen.
+- Ik ben er ook achtergekomen dat je mijn Like knop kan spammen waardoor er ontzettend veel afbeeldingen op mijn sd kaart komen.
+- Ik ben bezig om dit te fixen
+- Het staat niet in mijn MVP maar ik wil ervoor zorgen dat ik gridview item kan verwijderen van mijn sd kaart door een onLongClick, momenteel verwijderd die ze allemaal door mijn loop. Ik weet dat het aan de imagenames ligt.
+- Ik zal proberen om te zien of ik de imageid kan achterhalen in de gridview en deze dan hierdoor kan verwijderen.
+- Ik moet hierna als laatste ervoor zorgen dat mijn afbeeldingen naar een fullimage pagina gaan met daarin een ingrediëntenlijst en een how-to.
+
+# day 18
+
