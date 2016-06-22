@@ -42,6 +42,7 @@ FullImageActivity- De laatste activity is bedoeld om te laten zien hoe het gerec
 
 Beschrijving uitdagingen
 
+
 Defend your decisions by writing an argument of a most a single paragraph. 
 - Why was it good to do it different than you thought before? 
 - Are there trade-offs for your current solution? 
