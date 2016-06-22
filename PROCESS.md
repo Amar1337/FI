@@ -97,4 +97,24 @@ op mijn telefoon en dat ik ze daarna weer op kan halen en ze kan laten zien in d
 - Ik moet hierna als laatste ervoor zorgen dat mijn afbeeldingen naar een fullimage pagina gaan met daarin een ingrediëntenlijst en een how-to.
 
 # day 18
+- Ik ben vandaag bezig geweest om mijn imageID te achterhalen in de gridview. Dit is mij niet gelukt. het is mij alleen gelukt om het plaatje te verwijderen in de gridview, maar niet van de sd kaart. Als de app opnieuw opgestart wordt, wordt de gridview weer met alle plaatjes geladen.
+- Het lukt mij wel om alle plaatjes te verwijderen als er op een plaatje gelongclickt wordt, maar anders niet.
+- Ik ben ook bezig geweest met het fixen van een bug om de likebutton te disablen als er meerdere malen achter elkaar op geklikt wordt.
+- Door middel van een boolean wil ik ervoor zorgen dat de like button het niet doet als er op geklikt is en dat de button het weer doet als de swipe van de cards uit beeld is. Hoe ik dit moet doen weet ik nog niet zeker, want de library bevat ontzettend veel informatie waar ik doorheen moet komen.
+
+# day 19
+- Het lukt mij wel om de button te disablen en te enablen, alleen niet om de button te enablen op het moment dat de card uit beeld is.
+- Daarnaast doet de swipefunctie het nog steeds niet perfect.
+- De gridview doet ook niet wat ik wil. Ik weet dat dit gebeurt omdat ik dat zeg en dat ik de path naar mijn bestanden nodig heb, dit zit goed, alleen ik weet de syntax niet hoe ik dit kan oplossen. 
+- En tenslotte moet ik de How-To pagina laten werken. 
+- Ik ben erachter gekomen dat de how-to pagina ontzettend moeizaam gaat omdat ik 10 gerechten heb. De gridview is dynamisch, dit betekent dat de gridview niet hardcoded is. De gebruiker bepaalt zelf welke gerechten in de gridview komen. Dus het is ontzettend veel werk om dit allemaal werkende te krijgen.
+- Ik weet dat het niet slim was om met een library te werken maar dat ik wellicht beter met een viewpager had moeten werken.
+- Daarnaast zou het ook enorm geholpen hebben als ik een API had, want dit was gewoon teveel werk voor mij.
+- Ik heb martijn een mailtje gestuurd dat ik zijn hulp nodig heb om te kijken of we nog iets kunnen doen aan de bugs
+- Morgen is de laatste dag om problemen te fixen, maar ik ga nu voornamelijk verder aan mijn verslag
+
+# D-Day 23/6 (dag 20)
+- 
+- 
+- 
 
