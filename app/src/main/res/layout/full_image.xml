@@ -1,28 +1,58 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    tools:context=".howto.FullImageActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="How to"
-        android:id="@+id/textView2"
-        android:layout_gravity="center_horizontal"
-        android:textSize="40dp" />
-
-    <ImageView android:id="@+id/full_image_view"
-        android:layout_width="fill_parent"
-        android:layout_height="200dp"
-        android:scaleType="fitXY"/>
-
-    <ListView android:id= "@android:id/list"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp">
-    </ListView>
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="10dip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="How to"
+            android:id="@+id/textView2"
+            android:textSize="40dp" />
+
+        <ImageView
+            android:id="@+id/full_image_view"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Ingrediënten"
+            android:textSize="24dp" />
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="wrap_content"
+            androiTextView_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:background="#bdbcbc"
+            android:layout_height="wrap_content"
+            android:dividerHeight="1.0sp">
+        </ListView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="Bereiding"
+            android:textSize="24dp" />
+
+        <ListView
+            android:id="@+id/listView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:background="#4A9C67">
+        </ListView>
+    </LinearLayout>
+
+</ScrollView>

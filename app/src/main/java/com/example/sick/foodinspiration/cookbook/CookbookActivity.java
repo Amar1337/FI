@@ -3,6 +3,7 @@ package com.example.sick.foodinspiration.cookbook;
 import java.io.File;
 import java.util.ArrayList;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
@@ -82,7 +83,6 @@ public class CookbookActivity extends Activity {
         }
 
     }
-
     /*
     Imageadapter is the source for all items to be displayed in the grid
      */
@@ -164,7 +164,13 @@ public class CookbookActivity extends Activity {
             // Return bitmap
             return bm;
         }
-
+        private void openScreenshot(File imageFile) {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            Uri uri = Uri.fromFile(imageFile);
+            intent.setDataAndType(uri, "image/*");
+            startActivity(intent);
+        }
         public int calculateInSampleSize(
 
                 BitmapFactory.Options options, int reqWidth, int reqHeight) {
