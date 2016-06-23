@@ -41,7 +41,22 @@ FullImageActivity- De laatste activity is bedoeld om te laten zien hoe het gerec
 //ImageAdapter- Zorgt ervoor dat de afbeelding in de imageview wordt geladen.
 
 Beschrijving uitdagingen
+- Firebase en Facebook met elkaar laten werken
+Omdat ik geen Food API heb kunnen krijgen, concentreerde ik mij voornamelijk op de API voor het inloggen en registreren. Ik had als eerst besloten om alleen de Firebase database toe te voegen, maar vond dit toch niet zeer complex. Ik wilde daarom ook een social media aspect toevoegen bij het inloggen, namelijk de mogelijkheid om via Facebook in te loggen en de applicatie te kunnen gebruiken. Facebook inloggen werkt dan samen met de Firebase database en de database wordt dan telkens geupdate als iemand via Facebook wilt inloggen. Het heeft 2 weken geduurd voordat ik dit perfect kon laten werken, ik wilde ook nog een Google+ mogelijkheid toevoegen maar zag dat de tijd al begon te dringen voor de rest van de applicatie. 
 
+- Geen API
+Ik begon mijn ontwikkeling met het uitzoeken van een geschikte API. Ik begon bij BigOven, het leek alsof de API gratis was en dat ik het kon gebruiken voor onderwijsdoeleinden, helaas was dit niet het geval. Net als de Spoonacular API of de Food2Fork API, zat er altijd een addertje onder het gras. Meestal moest ik uiteindelijk mijn creditcardgegevens doorgeven of een grote betaling verrichten en daarna terugvragen. Dit wilde ik niet doen, dus heb ik maar besloten om te kijken hoe ver ik zou komen als ik het hardcoded zou doen. 
+
+- Library moeten gebruiken
+Doordat ik geen API heb kunnen krijgen, ben ik maar gaan zoeken naar alternatieven. Ik wilde de plaatjes hardcoded erin zetten en dan door middel van een library de swipefunctie implementeren. Ik heb nog nooit gewerkt met een library op dit niveau dus het is ook niet helemaal zonder slag of stoot gegaan. Het grootste probleem was dat ik de HELE library moest doorspitten, de library werkt dus met bepaalde functies en parameters, maar het was zo ontzettend veel dat ik soms niet wist waar ik moest kijken. Daarnaast was het ook niet mogelijk om in de library aanpassingen te verrichten.
+
+- De swipefunctie
+Ik was hiermee begonnen om het in een ViewPager te stoppen maar dit was wel heel erg simpel en het haalde toch het visueel effect van "Tinder" weg. Daarom wilde ik iets complexer proberen en daarom heb ik gekozen om de SwipeView Library te gebruiken.
+De functie van het swipen met behulp van de library is hetgene wat mij de meeste hoofdpijn heeft bezorgd. De uitdaging was hierbij om ervoor te zorgen dat de afbeelding die de "focused view" heeft, wordt opgeslagen als de user swiped of liked. Maar elke keer pakte het programma de afbeelding erachter en soms 2 afbeeldingen erachter. Ik heb enorm veel tijd gespendeerd om deze feature werkende te krijgen, want zowel de swipefunctie als de likefunctie deden het beiden niet. 
+Maar na een paar dagen van proberen was het mij gelukt om de likeclickfunctie werkende te krijgen. Dus als je nu op het groen duimpje klikt, wordt het gerecht dat bovenaan staat opgeslagen in mijn kookboek. De swipefunctie heb ik niet werkende kunnen krijgen, ik weet dat het programma zo ingesteld is dat die pas "liked" -dus het plaatje opslaat- als het plaatje geswiped is en niet tijdens het swipen. Ik heb een vermoeden dat de library niet compleet is, maar weet dit niet zeker. 
+(Het was mij ook opgevallen dat in de library een typfout staat in een functie genaamd "removeFocuedView" dit moet waarschijnlijk "removeFocusedView" zijn.)
+
+- Hardcoded gerechten
 
 Defend your decisions by writing an argument of a most a single paragraph. 
 - Why was it good to do it different than you thought before? 
