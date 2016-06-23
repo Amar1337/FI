@@ -68,8 +68,8 @@ Support JSON format in an easy to use REST-based API.
 ###- Google Calender API
 Ik zou ook graag de feature willen toevoegen om recepten (matches) toe te voegen aan je persoonlijke agenda. Zodat je kan inplannen wanneer je iets gaat maken. Ik zie dit als een stap in de goede richting om mensen het initiatief te laten nemen voor het bereiden van een relatief leuk en lekker gerecht. Hiervoor wil ik dus de Google Calendar API gebruiken (zie link: https://developers.google.com/google-apps/calendar/overview#apis_explorer)
 
-###- SQLite (databasemanagement)
-SQLite gaat gebruikt worden om opgeslagen gegevens te ontsluiten, bewaken en beheren. Denk hierbij aan de inloggegevens van de gebruiker maar ook de opgeslagen "matches", dus de gerechten die in het kookboek staan. De gebruiker moet door kunnen gaan, waar hij/zij voor het laatst gebleven is.
+###- SD Card (databasemanagement)
+Voor het opslaan van de "likes" die de gebruiker doorgeeft, wil ik een functie implementeren waarbij de afbeeldingen op de sd kaart worden opgeslagen en vervolgens weer opgehaald worden in de kookboek.
 
 ###- Android SDK (voor de framework)
 Android Software Development Kit gebruikt voor het maken van de applicatie. (Android Studio)
