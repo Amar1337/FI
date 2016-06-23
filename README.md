@@ -1,6 +1,6 @@
 # Food-Inspiration
 ######Geen idee wat je wilt eten? Geen idee wat je allemaal nodig hebt? De Food Inspiration applicatie biedt je door middel van afbeeldingen eten aan, die je dan kan liken of disliken. Als je het gerecht liked dan wordt het opgeslagen in je "contactenpagina", hierna kan je kijken waaruit het gerecht bestaat.
-
+--------------------------------------------------------------------------------------------------------------------------------------
 #### What problem will be solved for the user?
 Het idee is ontstaan nadat ikzelf (als student) in de supermarkt stond en het enorm vervelend vond dat ik geen idee had wat ik nou voor eten moest maken. Ik wilde een app maken die jou eten aanbiedt en hierdoor jouw probleem verdwijnt. Het probleem van constant de keuze moeten maken van wat je nou precies moet eten elke ochtend/middag/avond.
 #### What features will be available to solve the problem?
@@ -8,7 +8,7 @@ Er worden voornamelijk plaatjes gebruikt en de gebruiker kan hierop zijn/haar ke
 #### The overview of sketches and images
 The sketches and images are available in the doc folder. 
 #### External components (API)
-Het was als eerst de bedoeling om een BigOven API te krijgen, daarna Spoonacular en daarna Food2Fork maar helaas was het niet mogelijk om een werkende API te bemachtigen zonder ervoor te hoeven betalen. Ik heb daarom geprobeerd om alles hardcoded zo goed mogelijk uit te werken. Ik heb wel gebruik gemaakt van 2 andere API voor het inloggen en registreren, namelijk de Firebase API en de Facebook API. Deze werken met elkaar samen voor inlogproces van de gebruiker.
+Het was als eerst de bedoeling om een BigOven API te krijgen, daarna Spoonacular en daarna Food2Fork maar helaas was het niet mogelijk om een werkende API te bemachtigen zonder ervoor te hoeven betalen. Ik heb daarom geprobeerd om alles hardcoded zo goed mogelijk uit te werken. Ik heb wel gebruik gemaakt van 2 andere API voor het inloggen en registreren, namelijk de Firebase API en de Facebook API. Deze werken met elkaar samen voor het inlogproces van de gebruiker.
 #### Technical problems during the development
 De technische problemen die tijdens het project naar boven zijn gekomen, is de implementatie van een externe library. Het heeft enorm veel tijd gekost om deze library te begrijpen en te verwerken in mijn MainActivity. Het is mij wel gelukt om de MainActivity te laten werken maar bepaalde features zoals de FullImageActivity perfect te laten werken is helaas niet gelukt. Ik heb daarnaast ook aan het begin van het project veel tijd besteed aan het inloggen en registreren omdat ik toch graag wilde werken met API's, maar ik heb door deze keuze achterstand opgelopen tijdens het einde van het project.
 #### Review of similar applications
