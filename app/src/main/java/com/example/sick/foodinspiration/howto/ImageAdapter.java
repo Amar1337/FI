@@ -15,8 +15,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import com.example.sick.foodinspiration.R;
 
-/*
-Imageadapter for all the images that will be hardcoded in the FullImageActivity
+/*  Imageadapter for all the images that will be hardcoded in the FullImageActivity
  */
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
