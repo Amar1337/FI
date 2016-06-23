@@ -114,7 +114,10 @@ op mijn telefoon en dat ik ze daarna weer op kan halen en ze kan laten zien in d
 - Morgen is de laatste dag om problemen te fixen, maar ik ga nu voornamelijk verder aan mijn verslag
 
 # D-Day 23/6 (dag 20)
-- 
-- 
-- 
+- Vandaag heb ik de hele dag aan mijn verslag gezeten
+- Het is uiteindelijk gelukt om de Swipe + Like te fixen door middel van een hack
+- Code weer nog meer opschonen
+- Github bijwerken, readme, license, process
+- Het is niet gelukt om de FullImageActivity volledig te laten werken
+- Laatste keer commit + push
 
