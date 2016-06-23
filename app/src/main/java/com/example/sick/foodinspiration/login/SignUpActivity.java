@@ -1,5 +1,12 @@
 package com.example.sick.foodinspiration.login;
 
+/** Assignment: Food Inspiration
+ * Created by Amar Skenderovic on 9-6-2016.
+ * Honor code: I pledge that this program represents my own program code. I received help from
+ * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
+ * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
+ */
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -10,13 +17,6 @@ import com.example.sick.foodinspiration.R;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import java.util.Map;
-
-/** Assignment: Food Inspiration
- * Created by Amar Skenderovic on 5-6-2016.
- * Honor code: I pledge that this program represents my own program code. I received help from
- * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
- * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
- */
 
 /* The SignUpActivity asks the user for input of account details. If the user wants to use the app, they will have the option to
  * create a new account. The Sign up works with the Firebase API, this means all the details of the account will be displayed in

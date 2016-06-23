@@ -1,20 +1,19 @@
 package com.example.sick.foodinspiration.howto;
 
-import android.content.Context;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-
-import com.example.sick.foodinspiration.R;
-
 /** Assignment: Food Inspiration
  * Created by Amar Skenderovic on 9-6-2016.
  * Honor code: I pledge that this program represents my own program code. I received help from
  * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
  * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
  */
+
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+import com.example.sick.foodinspiration.R;
 
 /*
 Imageadapter for all the images that will be hardcoded in the FullImageActivity

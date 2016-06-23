@@ -1,15 +1,18 @@
 package com.example.sick.foodinspiration.loadscreen;
 
+/** Assignment: Food Inspiration
+ * Created by Amar Skenderovic on 19-6-2016.
+ * Honor code: I pledge that this program represents my own program code. I received help from
+ * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
+ * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
+ */
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import com.example.sick.foodinspiration.R;
 import com.example.sick.foodinspiration.login.LoginActivity;
-
-/**
- * Created by Sick on 19-6-2016.
- */
 
 /* Class created for having a more professional design. The Splash class handles a simple "loading screen" that will be
  * displayed for a certain amount of time before heading to the login/register page.

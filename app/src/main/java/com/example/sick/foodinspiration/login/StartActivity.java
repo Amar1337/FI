@@ -1,5 +1,12 @@
 package com.example.sick.foodinspiration.login;
 
+/** Assignment: Food Inspiration
+ * Created by Amar Skenderovic on 5-6-2016.
+ * Honor code: I pledge that this program represents my own program code. I received help from
+ * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
+ * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
+ */
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -23,13 +30,6 @@ import com.firebase.client.ValueEventListener;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-/** Assignment: Food Inspiration
- * Created by Amar Skenderovic on 5-6-2016.
- * Honor code: I pledge that this program represents my own program code. I received help from
- * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
- * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
- */
 
 /* The StartActivity is the activity where the user can decide wether to immediatly start with the MainActivity, to
  * continue to the CookbookActivity or to Log out. But there is also happening allot on the background, after the user is logged in

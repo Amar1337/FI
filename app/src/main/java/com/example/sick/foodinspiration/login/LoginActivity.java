@@ -1,5 +1,12 @@
 package com.example.sick.foodinspiration.login;
 
+/** Assignment: Food Inspiration
+ * Created by Amar Skenderovic on 5-6-2016.
+ * Honor code: I pledge that this program represents my own program code. I received help from
+ * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
+ * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
+ */
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,13 +27,6 @@ import com.firebase.client.AuthData;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import java.util.Arrays;
-
-/** Assignment: Food Inspiration
- * Created by Amar Skenderovic on 5-6-2016.
- * Honor code: I pledge that this program represents my own program code. I received help from
- * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
- * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
- */
 
 /*
  * Login activity where the user has the option to login via facebook (API) or register via the registerpage (Firebase API) and

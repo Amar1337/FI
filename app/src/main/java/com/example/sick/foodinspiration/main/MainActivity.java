@@ -1,5 +1,12 @@
 package com.example.sick.foodinspiration.main;
 
+/** Assignment: Food Inspiration
+ * Created by Amar Skenderovic on 5-6-2016.
+ * Honor code: I pledge that this program represents my own program code. I received help from
+ * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
+ * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
+ */
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -23,13 +30,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-
-/** Assignment: Food Inspiration
- * Created by Amar Skenderovic on 5-6-2016.
- * Honor code: I pledge that this program represents my own program code. I received help from
- * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
- * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
- */
 
 /* The MainActivity is the activity that shows the basic principle of Tinder. You can swipe to the left to dislike and
  * to the right to like a meal. But you also have the option to dislike and like via clicking on buttons (imageviews to be more

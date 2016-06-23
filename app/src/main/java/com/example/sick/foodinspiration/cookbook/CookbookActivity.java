@@ -1,5 +1,12 @@
 package com.example.sick.foodinspiration.cookbook;
 
+/** Assignment: Food Inspiration
+ * Created by Amar Skenderovic on 12-6-2016.
+ * Honor code: I pledge that this program represents my own program code. I received help from
+ * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
+ * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
+ */
+
 import java.io.File;
 import java.util.ArrayList;
 import android.content.Intent;
@@ -23,12 +30,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import com.example.sick.foodinspiration.R;
 import com.example.sick.foodinspiration.howto.FullImageActivity;
-/** Assignment: Food Inspiration
- * Created by Amar Skenderovic on 9-6-2016.
- * Honor code: I pledge that this program represents my own program code. I received help from
- * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
- * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
- */
 
 /* The CookbookActivity is a gallery made to represent all the likes from the MainActivity. They are being retrieved from the SD card
  * and shown in 2 rows. The user can long click a single gridview item to delete it and click it to continue to the FullImageActivity.
