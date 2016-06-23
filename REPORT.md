@@ -1,4 +1,4 @@
-#Report Food Inspiration** by Amar Skenderovic 11196041
+#Report Food Inspiration by Amar Skenderovic 11196041
 
 ###Beschrijving van het project
 
