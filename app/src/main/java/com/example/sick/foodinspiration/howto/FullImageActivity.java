@@ -24,13 +24,14 @@ import com.example.sick.foodinspiration.R;
  */
 public class FullImageActivity extends ActionBarActivity {
 
-    private ListView mListView1, mListView2;
+    private ListView mListView1, mListView2, mListView3, mListView4;
 
     // Hardcoded text for inside the listview
     private String [] data1 ={"2 avocado’s", "4 eieren",
             "peper en zout", "snuf chili vlokken",
             "zout", "peper",
             "2 plakken ontbijtspek"};
+
     private String [] data2 ={"Verwarm de oven op 200 graden.",
             "Snijd de avocado’s doormidden en verwijder de pit.",
             "Leg ze in een ovenschaal. ",
@@ -43,6 +44,21 @@ public class FullImageActivity extends ActionBarActivity {
                     "Bak ze 15 minuten in de oven tot het ei gestold is. ",
                     "Je kunt ze ook iets langer er in laten als je van een harde dooier houd."};
 
+    private String [] data3 ={"2 avocado’s", "4 eieren",
+            "peper en zout", "snuf chili vlokken",
+            "zout", "peper",
+            "2 plakken ontbijtspek"};
+    private String [] data4 ={"Verwarm de oven op 200 graden.",
+            "Snijd de avocado’s doormidden en verwijder de pit.",
+            "Leg ze in een ovenschaal. ",
+            "Schep met een lepeltje het gat van de pit nog iets dieper. ",
+            "Kluts in iedere avocado een ei. ",
+            "Je kunt ook het ei eerst in een kommetje doen en dan voorzichtig in het gat laten glijden.",
+            "Serveer de pasta met wat geraspte parmezaanse kaas. ",
+            "Bestrooi met peper, zout en chili. ",
+            "Snijd het spek in reepjes en verdeel over de avocado’s. ",
+            "Bak ze 15 minuten in de oven tot het ei gestold is. ",
+            "Je kunt ze ook iets langer er in laten als je van een harde dooier houd."};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
