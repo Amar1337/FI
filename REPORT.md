@@ -59,7 +59,9 @@ De "likes" komen in een gridview terecht die uit de SD kaart worden gehaald. Ver
 
 De laatste activity is bedoeld om te laten zien hoe het gerecht, die in de gridview staat, gemaakt moet worden. Je hebt een foto van het gerecht met daaronder 2 listviews in een scrollview. In 1 listview staan de ingrediënten en in de andere listview staat hoe je het gerecht moet bereiden. Ik heb 3 gerechten er hardcoded in moeten zetten om te laten zien hoe het gerecht zou werken als er met een volledig werkende API gewerkt zou zijn.
 
-ImageAdapter- De ImageAdapter class zorgt ervoor dat de afbeelding in de FullImageActivity geladen wordt.
+####ImageAdapter 
+
+De ImageAdapter class zorgt ervoor dat de afbeelding in de FullImageActivity geladen wordt.
 
 ###Beschrijving uitdagingen
 
