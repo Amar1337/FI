@@ -5,8 +5,8 @@
 Het idee is ontstaan nadat ikzelf (als student) in de supermarkt stond en het enorm vervelend vond dat ik geen idee had wat ik nou voor eten moest maken. Ik wilde een app maken die jou eten aanbiedt en hierdoor jouw probleem verdwijnt. Het probleem van constant de keuze moeten maken van wat je nou precies moet eten elke ochtend/middag/avond.
 #### What features will be available to solve the problem?
 Er worden voornamelijk plaatjes gebruikt en de gebruiker kan hierop zijn/haar keuze baseren. Met behulp van de keuze van de gebruiker, dus een like of dislike, zal gekeken worden of het gerecht wordt opgeslagen of niet. Als het gerecht eenmaal wordt opgeslagen, zal de gebruiker in staat zijn om het gerecht (met alle benodigde ingrediënten) in te zien.
-#### The overview of sketches
-The sketches are available in the doc folder. 
+#### The overview of sketches and images
+The sketches and images are available in the doc folder. 
 #### External components (API)
 Het was als eerst de bedoeling om een BigOven API te krijgen, daarna Spoonacular en daarna Food2Fork maar helaas was het niet mogelijk om een werkende API te bemachtigen zonder ervoor te hoeven betalen. Ik heb daarom geprobeerd om alles hardcoded zo goed mogelijk uit te werken. Ik heb wel gebruik gemaakt van 2 andere API voor het inloggen en registreren, namelijk de Firebase API en de Facebook API. Deze werken met elkaar samen voor inlogproces van de gebruiker.
 #### Technical problems during the development
