@@ -18,3 +18,9 @@ Ik heb daarnaast ook de "Tender-app" gedownload, dit is een bestaande app die ee
 Het minimale wat de applicatie momenteel kan is een gebruiker laten inloggen, registreren en dit in de online database verwerken via zowel de applicatie zelf als via facebook. Daarnaast kan de gebruiker ook afbeeldingen liken en disliken en vervolgens in de kookboek terugvinden. De FullImageActivity is momenteel niet dynamisch maar hardcoded.
 #### Conclusie
 Een app die gerechten aanbiedt aan de gebruiker door middel van plaatjes. De gebruiker krijgt de mogelijkheid om naar links of naar rechts te swipen (links is dislike en rechts is een like). Als de foto/het gerecht geliked wordt, dan zal deze opgeslagen worden in de persoonlijke database van gerechten van de gebruiker. Door middel van foto's kan de gebruiker zijn/haar "matches" terug zien en de recepten hier uit halen om ze vervolgens zelf thuis te maken.
+
+####Dankwoord
+Ik wil graag de assistenten bedanken voor de hulp van de afgelopen maanden, de community van StackOverflow voor het uitleggen en M. Stegeman voor het leiden van de Minor Programmeren en voor het fixen van een nare bug :)
+
+
+
