@@ -23,19 +23,21 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import com.example.sick.foodinspiration.R;
 import com.example.sick.foodinspiration.howto.FullImageActivity;
-/**
- * Created by Sick on 9-6-2016.
+/** Assignment: Food Inspiration
+ * Created by Amar Skenderovic on 9-6-2016.
+ * Honor code: I pledge that this program represents my own program code. I received help from
+ * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
+ * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
  */
 
 /* The CookbookActivity is a gallery made to represent all the likes from the MainActivity. They are being retrieved from the SD card
- * and shown in 2 rows. The user can long click a single gridview item to delete it and it will also permanently be deleted from the
- * SD card.
+ * and shown in 2 rows. The user can long click a single gridview item to delete it and click it to continue to the FullImageActivity.
  */
 public class CookbookActivity extends Activity {
 
     AsyncTaskLoadFiles myAsyncTaskLoadFiles;
 
-    /* Asynctask the get the files that are being saved in the sd card
+    /* Asynctask to get the files that are being saved in the sd card
      */
     public class AsyncTaskLoadFiles extends AsyncTask<Void, String, Void> {
 
@@ -47,6 +49,8 @@ public class CookbookActivity extends Activity {
             myTaskAdapter = adapter;
         }
 
+        /* Get the path from the sd card where the images are being saved
+        */
         @Override
         protected void onPreExecute() {
             String ExternalStorageDirectoryPath = Environment
@@ -59,6 +63,8 @@ public class CookbookActivity extends Activity {
             super.onPreExecute();
         }
 
+        /* Check if the files are actually in the folder
+        */
         @Override
         protected Void doInBackground(Void... params) {
 
@@ -69,6 +75,7 @@ public class CookbookActivity extends Activity {
             }
             return null;
         }
+
 
         @Override
         protected void onProgressUpdate(String... values) {
@@ -122,7 +129,8 @@ public class CookbookActivity extends Activity {
             return 0;
         }
 
-        // Creates a new ImageView for each item referenced by the Adapter
+        /* Creates a new ImageView for each item referenced by the Adapter
+         */
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ImageView imageView;
@@ -164,13 +172,7 @@ public class CookbookActivity extends Activity {
             // Return bitmap
             return bm;
         }
-        private void openScreenshot(File imageFile) {
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
-            Uri uri = Uri.fromFile(imageFile);
-            intent.setDataAndType(uri, "image/*");
-            startActivity(intent);
-        }
+
         public int calculateInSampleSize(
 
                 BitmapFactory.Options options, int reqWidth, int reqHeight) {
@@ -205,6 +207,9 @@ public class CookbookActivity extends Activity {
         gridview.setAdapter(myImageAdapter);
         gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
+            /* A onLongClickListener for deleting items from the gridview.
+            *  Also added a for loop for how to delete every item in the gridview at once.
+            */
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id) {
@@ -212,15 +217,15 @@ public class CookbookActivity extends Activity {
                 // Removes the image from the gridview
                 myImageAdapter.remove(position);
 
-                // Deletes EVERY image when LongClicked... cant make it delete 1 image
-                for (int i = 0; i < 50; i++){
-
-                    // Trying to delete the LongClicked Image from the SD card
-                    String myFile = "/Food Inspiration/" + "pic-" + i + ".png";
-                    String myPath = Environment.getExternalStorageDirectory()+myFile;
-                    File f = new File(myPath);
-                    Boolean deleted = f.delete();
-                }
+                // Deletes EVERY image from the sd card when LongClicked... cant make it delete 1 image
+//                for (int i = 0; i < 50; i++){
+//
+//                    // Trying to delete the LongClicked Image from the SD card
+//                    String myFile = "/Food Inspiration/" + "pic-" + i + ".png";
+//                    String myPath = Environment.getExternalStorageDirectory()+myFile;
+//                    File f = new File(myPath);
+//                    Boolean deleted = f.delete();
+//                }
 
                 // Updates the gridview
                 myImageAdapter.notifyDataSetChanged();

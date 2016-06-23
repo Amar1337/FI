@@ -24,8 +24,11 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by Sick on 5-6-2016.
+/** Assignment: Food Inspiration
+ * Created by Amar Skenderovic on 5-6-2016.
+ * Honor code: I pledge that this program represents my own program code. I received help from
+ * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
+ * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
  */
 
 /* The StartActivity is the activity where the user can decide wether to immediatly start with the MainActivity, to

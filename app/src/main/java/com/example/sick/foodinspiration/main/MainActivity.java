@@ -3,22 +3,15 @@ package com.example.sick.foodinspiration.main;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
-import android.media.Image;
 import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.widget.CardView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Toast;
 import com.example.sick.foodinspiration.cookbook.CookbookActivity;
 import com.example.sick.foodinspiration.login.Constants;
@@ -27,24 +20,22 @@ import com.example.sick.foodinspiration.R;
 import com.firebase.client.Firebase;
 import com.rk.lib.view.SwipeView;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
-import java.lang.reflect.Field;
-import java.util.Random;
-import java.util.logging.Handler;
+import java.util.ArrayList;
 
-
-/**
- * Created by Sick on 5-6-2016.
+/** Assignment: Food Inspiration
+ * Created by Amar Skenderovic on 5-6-2016.
+ * Honor code: I pledge that this program represents my own program code. I received help from
+ * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
+ * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
  */
 
 /* The MainActivity is the activity that shows the basic principle of Tinder. You can swipe to the left to dislike and
- * to the right to like a meal. But you also have the option to dislike and like via clicking on buttons (imageviews to be more precise)
- * The liked images get converted into bitmap and then saved on your phone. I chose for this option because the images are hardcoded.
- * It wasn't possible to get a API for mealpictures, ingredients and how-to. So I had to do it like this.
- * The images are getting retrieved in the next Activity called the CookbookActivity where all the "matches" are stored.
+ * to the right to like a meal. But you also have the option to dislike and like via clicking on buttons (imageviews to be more
+ * precise)The liked images get converted into bitmap and then saved on your phone. I chose for this option because the images
+ * are hardcoded and I thought it would be easier this way. It wasn't possible to get a API for mealpictures, ingredients and
+ * how-to. The images are getting retrieved in the next Activity called the CookbookActivity where all the "matches" are stored.
  */
 public class MainActivity extends Activity implements SwipeView.OnCardSwipedListener {
 
@@ -52,17 +43,12 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
     private final static int CARDS_MAX_ELEMENTS = 5;
     private FrameLayout contentLayout;
     private SwipeView mSwipeView;
-    private View addCardc41;
     private Firebase mRef;
     public ImageView imageLogo;
     public ImageView imageview;
-    private static final String TAG = "MyActivity";
 
     // Creating array of meals, getting them from the drawable folder
     private int[] meals = {
-            R.drawable.gevulde_avocados_met_ei,
-            R.drawable.pasta_met_spinazie_en_garnalen,
-            R.drawable.griekse_aardappelen,
             R.drawable.pasta_met_spinazie_en_gorgonzolasaus,
             R.drawable.zalm_spinazie,
             R.drawable.rode_curry_met_runderreepjes,
@@ -71,6 +57,9 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
             R.drawable.pasta_bloemkoolsaus,
             R.drawable.paella
     };
+
+    // Declared array for keeping track of what cardview is on top
+    private ArrayList<View> cards = new ArrayList<View>();
 
     // Declaring a counter for the next method
     private int count = 0;
@@ -95,8 +84,14 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
     }
 
     public void saveCards(){
-        View cardView = mSwipeView.getChildAt(mSwipeView.getChildCount() - 1);
+
+        // Removing the cardview that is on top
+        View cardView = this.cards.remove(0);
+
+        // Initializing the imagview
         ImageView imageView = (ImageView) cardView.findViewById(R.id.imgMeals);
+
+        // Convert from imageview to bitmap
         BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
         Bitmap bm = drawable.getBitmap();
 
@@ -145,7 +140,6 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
 
             // If the imageview of like is clicked
             case R.id.imgLike: {
-                saveCards();
                 // The imageview in the contentlayout will be swiped to the right
                 mSwipeView.likeCard();
                 break;
@@ -154,8 +148,7 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
     }
     // Method for when a picture is being liked as well as swiped to the right
     public void onLikes() {
-        ImageView imagelike = (ImageView) findViewById(R.id.imgLike);
-        imagelike.setEnabled(false);
+        saveCards();
         // The imageview in the contentlayout will be swiped to the right
         System.out.println("An Card removed");
         // Add a card if you needed after any previous card swiped
@@ -184,10 +177,10 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
         count++;
         if (count == meals.length) {
             count = 0;
-            ImageView imagelike = (ImageView) findViewById(R.id.imgLike);
-            imagelike.setEnabled(true);
         }
 
+        // Viewing the card that is on top (referring to saveCards();)
+        this.cards.add(cardView);
         // Add a card to the swipe view
         mSwipeView.addCard(cardView, position);
 

@@ -1,5 +1,11 @@
 package com.example.sick.foodinspiration.howto;
 
+/** Assignment: Food Inspiration
+ * Created by Amar Skenderovic on 9-6-2016.
+ * Honor code: I pledge that this program represents my own program code. I received help from
+ * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
+ * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
+ */
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +17,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-
 import com.example.sick.foodinspiration.R;
 
+/** The Activity that is creating for putting content in images that are being clicked from the CookbookActivity.
+ * The first three images are hardcoded to represent what the application should do if the app would work with an API.
+ */
 public class FullImageActivity extends ActionBarActivity {
 
     private ListView mListView1, mListView2;
 
+    // Hardcoded text for inside the listview
     private String [] data1 ={"2 uien", "2 teentjes knoflook",
             "1 ei", "500 gr rundergehakt (of 250 gr rund en 250 gr lam of 250 gr varkensgehakt)",
             "zout", "peper",
@@ -43,20 +52,27 @@ public class FullImageActivity extends ActionBarActivity {
         int position = i.getExtras().getInt("id");
         ImageAdapter imageAdapter = new ImageAdapter(this);
 
+        // Initialize the imageview where the images from the ImageAdapter will be put in
         ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
+
+        // Get the position of the images
         imageView.setImageResource(imageAdapter.mThumbIds[position]);
 
+        // Initialize the listviews
         mListView1 = (ListView)findViewById(R.id.listView1);
         mListView2 = (ListView)findViewById(R.id.listView2);
 
+        // Set the strings inside of the listview
         mListView1.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data1));
         mListView2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data2));
 
+        // Initialize the listutils for the visual of the listviews
         ListUtils.setDynamicHeight(mListView1);
         ListUtils.setDynamicHeight(mListView2);
     }
 
-
+    /** ListUtils is a class that add some more effect to the listviews
+     */
     public static class ListUtils {
         public static void setDynamicHeight(ListView mListView) {
             ListAdapter mListAdapter = mListView.getAdapter();
@@ -66,6 +82,8 @@ public class FullImageActivity extends ActionBarActivity {
             }
             int height = 0;
             int desiredWidth = MeasureSpec.makeMeasureSpec(mListView.getWidth(), MeasureSpec.UNSPECIFIED);
+
+            // Constraints
             for (int i = 0; i < mListAdapter.getCount(); i++) {
                 View listItem = mListAdapter.getView(i, null, mListView);
                 listItem.measure(desiredWidth, MeasureSpec.UNSPECIFIED);

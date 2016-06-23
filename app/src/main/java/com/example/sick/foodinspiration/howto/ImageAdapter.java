@@ -9,15 +9,22 @@ import android.widget.ImageView;
 
 import com.example.sick.foodinspiration.R;
 
-/**
- * Created by Sick on 9-6-2016.
+/** Assignment: Food Inspiration
+ * Created by Amar Skenderovic on 9-6-2016.
+ * Honor code: I pledge that this program represents my own program code. I received help from
+ * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
+ * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
  */
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
 
     // Keep all Images in array
     public Integer[] mThumbIds = {
-            R.drawable.gevulde_avocados_met_ei
+            R.drawable.gevulde_avocados_met_ei,
+            R.drawable.pasta_met_spinazie_en_garnalen,
+            R.drawable.griekse_aardappelen,
+            R.drawable.pasta_met_spinazie_en_gorgonzolasaus,
+            R.drawable.zalm_spinazie
     };
 
     // Constructor

@@ -11,8 +11,11 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import java.util.Map;
 
-/**
- * Created by Sick on 5-6-2016.
+/** Assignment: Food Inspiration
+ * Created by Amar Skenderovic on 5-6-2016.
+ * Honor code: I pledge that this program represents my own program code. I received help from
+ * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
+ * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
  */
 
 /* The SignUpActivity asks the user for input of account details. If the user wants to use the app, they will have the option to
@@ -35,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        // Add Firebase Reference URL which will be used in combination with the SignUpActivity for saving users (database)
+        // Firebase Reference URL which will be used in  the SignUpActivity for saving users (database)
         myFirebaseRef =  new Firebase("https://food-inspiration.firebaseio.com/");
 
     }
