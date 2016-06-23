@@ -1,6 +1,6 @@
 #Report Food Inspiration** by Amar Skenderovic 11196041
 
-###Beschrijving van het project***
+###Beschrijving van het project
 
 Voor het vak Programmeertheorie moest ik een applicatie maken naar eigen keuze. Dit was een project die ik al langer in mijn hoofd had namelijk Food Inspiration. Een applicatie gebaseerd op Tinder, waarbij de gebruiker gerechten kan "liken of disliken". Deze worden vervolgens opgeslagen in de gebruikers zijn/haar kookboek. Zij kunnen dan op het gerecht klikken om vervolgens naar de How-To pagina te gaan, hierin staan de ingrediënten van het gerecht inclusief de voorbereiding. Om het programma te gebruiken dient de gebruiker zich aan te melden. Dat kan via een eigen registratie of via Facebook.
 
