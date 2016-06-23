@@ -28,7 +28,8 @@ Ik wil graag de assistenten bedanken voor de hulp van de afgelopen maanden, de c
 ![screenshot_2016-06-23-22-27-05 1](https://cloud.githubusercontent.com/assets/18394877/16319107/2294fc48-3992-11e6-80bf-338089711d39.png) CookbookActivity waar de gebruiker zijn/haar matches terug kan vinden.
 ![screenshot_2016-06-23-22-22-31 1](https://cloud.githubusercontent.com/assets/18394877/16319031/dd446908-3991-11e6-8bc9-1d1932cce678.png) FullImageActivity waar de gebruiker de details van de "like" kan zien zoals de ingrediënten en de bereiding.
 
-External Credits:
+--------------------------------------------------------------------------------------------------------------------------------------
+#### External Credits:
 I would like to give credits to the following:
 SwipeView library by IntelliJ IDEA powered by Fernflower decompiler.
 Facebook for the API and documentation.
