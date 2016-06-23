@@ -24,7 +24,6 @@ Ik wil graag de assistenten bedanken voor de hulp van de afgelopen maanden, de c
 
 ##Final Screens
 ![screenshot_2016-06-23-22-17-00 1](https://cloud.githubusercontent.com/assets/18394877/16319087/0b0842a6-3992-11e6-9f08-2da6e2d335b6.png) 
-
 StartActivity dat functioneert als een welkompagina.
 ![screenshot_2016-06-22-19-32-29 1](https://cloud.githubusercontent.com/assets/18394877/16319088/0c54a7c6-3992-11e6-89ea-f5444274c96e.png) MainActivity waar de gebruiker kan like en disliken.
 ![screenshot_2016-06-23-22-27-05 1](https://cloud.githubusercontent.com/assets/18394877/16319107/2294fc48-3992-11e6-80bf-338089711d39.png) CookbookActivity waar de gebruiker zijn/haar matches terug kan vinden.
