@@ -44,21 +44,23 @@ public class FullImageActivity extends ActionBarActivity {
                     "Bak ze 15 minuten in de oven tot het ei gestold is. ",
                     "Je kunt ze ook iets langer er in laten als je van een harde dooier houd."};
 
-    private String [] data3 ={"2 avocado’s", "4 eieren",
-            "peper en zout", "snuf chili vlokken",
-            "zout", "peper",
-            "2 plakken ontbijtspek"};
-    private String [] data4 ={"Verwarm de oven op 200 graden.",
-            "Snijd de avocado’s doormidden en verwijder de pit.",
-            "Leg ze in een ovenschaal. ",
-            "Schep met een lepeltje het gat van de pit nog iets dieper. ",
-            "Kluts in iedere avocado een ei. ",
-            "Je kunt ook het ei eerst in een kommetje doen en dan voorzichtig in het gat laten glijden.",
-            "Serveer de pasta met wat geraspte parmezaanse kaas. ",
-            "Bestrooi met peper, zout en chili. ",
-            "Snijd het spek in reepjes en verdeel over de avocado’s. ",
-            "Bak ze 15 minuten in de oven tot het ei gestold is. ",
-            "Je kunt ze ook iets langer er in laten als je van een harde dooier houd."};
+//    Geen tijd meer gehad om verder te werken aan de recepten
+//    private String [] data3 ={"150 gr spinazie (ontdooid)",
+//            "1 ui",
+//            "1 teentje knoflook",
+//            "150 gr spaghetti",
+//            "125 ml creme fraiche",
+//            "1 eetlepel pesto",
+//            "100 gr garnalen",
+//            "olie om te bakken",
+//            "peper en zout",
+//            "2 eetlepels parmezaanse kaas (geraspt)"};
+//
+//    private String [] data4 ={"Breng een pan met water aan de kook en kook de spaghetti volgens de verpakking gaar.",
+//            " Verhit een beetje olie in een pan en bak de garnalen 2 minuutjes en bestrooi ze ondertussen met een beetje peper en zout. ",
+//            " Haal de garnalen uit de pan. ",
+//            " Snipper de ui en de knoflook en fruit aan in dezelfde pan."};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
