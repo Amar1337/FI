@@ -31,6 +31,9 @@ Ik wil graag de assistenten bedanken voor de hulp van de afgelopen maanden, de c
 --------------------------------------------------------------------------------------------------------------------------------------
 #### External Credits:
 I would like to give credits to the following:
-SwipeView library by IntelliJ IDEA powered by Fernflower decompiler.
-Facebook for the API and documentation.
-Firebase for the API and the documentation.
+
+- SwipeView library by IntelliJ IDEA powered by Fernflower decompiler.
+
+- Facebook for the API and documentation.
+
+- Firebase for the API and the documentation.
