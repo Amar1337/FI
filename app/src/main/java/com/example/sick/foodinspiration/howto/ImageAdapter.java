@@ -15,6 +15,10 @@ import com.example.sick.foodinspiration.R;
  * (Android documentation, Facebook API, Firebase API, Stackoverflow, Library for the SwipeView from IntelliJ IDEA,
  * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
  */
+
+/*
+Imageadapter for all the images that will be hardcoded in the FullImageActivity
+ */
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
 

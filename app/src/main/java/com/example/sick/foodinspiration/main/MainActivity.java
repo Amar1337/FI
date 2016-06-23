@@ -83,6 +83,10 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
         }
     }
 
+    /*
+    Method for getting the topcard and converting it to a bitmap. Then saving it on the SD card and naming it with a do-while loop.
+    After naming it, the SD card will be updated
+     */
     public void saveCards(){
 
         // Removing the cardview that is on top
@@ -127,7 +131,10 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
             fOut.close();
         } catch (Exception e){}
     }
-    // Method for handling the onclick of like and dislike
+
+    /*
+    Method for handling the onclick of like and dislike
+     */
     public void onClickedView(View clickedView) {
         switch (clickedView.getId()) {
 
@@ -146,7 +153,10 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
             }
         }
     }
-    // Method for when a picture is being liked as well as swiped to the right
+
+    /*
+    Method for when a picture is being liked as well as swiped to the right
+     */
     public void onLikes() {
         saveCards();
         // The imageview in the contentlayout will be swiped to the right
@@ -154,7 +164,10 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
         // Add a card if you needed after any previous card swiped
         addCard(0);
     }
-    // Method if image Disliked the card goes to the left
+
+    /*
+    Method if image Disliked the card goes to the left
+     */
     @Override
     public void onDisLikes() {
         System.out.println("An Card removed");
@@ -162,12 +175,18 @@ public class MainActivity extends Activity implements SwipeView.OnCardSwipedList
         addCard(0);
     }
 
+    /*
+    Calling onSingleTap from library that if the user taps, to slightly move the image
+     */
     @Override
     public void onSingleTap() {
 
     }
 
-    // Adds the card to the swipe.
+    /*
+    Adds the card to the swipe. Also puts the list of 'meals' in the imageview from the xml file
+    called item_swipe_view then increments them in the cardview.
+     */
     private void addCard(int position) {
         final View cardView = LayoutInflater.from(this).inflate(
                 R.layout.item_swipe_view, null);

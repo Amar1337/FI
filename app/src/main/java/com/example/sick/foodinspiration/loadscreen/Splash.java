@@ -11,8 +11,7 @@ import com.example.sick.foodinspiration.login.LoginActivity;
  * Created by Sick on 19-6-2016.
  */
 
-/**
- * Class created for having a more professional design. The Splash class handles a simple "loading screen" that will be
+/* Class created for having a more professional design. The Splash class handles a simple "loading screen" that will be
  * displayed for a certain amount of time before heading to the login/register page.
  * After the display length is finished the activity will automatically continue to the LoginActivity.
  */

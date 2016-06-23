@@ -19,7 +19,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import com.example.sick.foodinspiration.R;
 
-/** The Activity that is creating for putting content in images that are being clicked from the CookbookActivity.
+/** The FullImageActivity that is created for putting content in images that are being clicked from the CookbookActivity.
  * The first three images are hardcoded to represent what the application should do if the app would work with an API.
  */
 public class FullImageActivity extends ActionBarActivity {
@@ -27,18 +27,21 @@ public class FullImageActivity extends ActionBarActivity {
     private ListView mListView1, mListView2;
 
     // Hardcoded text for inside the listview
-    private String [] data1 ={"2 uien", "2 teentjes knoflook",
-            "1 ei", "500 gr rundergehakt (of 250 gr rund en 250 gr lam of 250 gr varkensgehakt)",
+    private String [] data1 ={"2 avocado’s", "4 eieren",
+            "peper en zout", "snuf chili vlokken",
             "zout", "peper",
-            "3 eetlepels fijngehakte peterselie", "1 eetlepel tomatenpuree",
-            "1 eetlepel mosterd", "snufje cayennepeper",
-            "2 eetlepels bloem", "olie, om in te bakken"};
-    private String [] data2 ={"Breng een pan met water aan de kook en kook de spaghetti volgens de verpakking gaar.",
-            "Verhit een beetje olie in een pan en bak de garnalen 2 minuutjes en bestrooi ze ondertussen met een beetje peper en zout.",
-            "Haal de garnalen uit de pan. Snipper de ui en de knoflook en fruit aan in dezelfde pan.",
-            "Voeg de spinazie toe en verwarm deze in de pan. Roer de creme fraiche en de pesto er door.",
-            "Proef of de saus nog een snufje peper of zout nodig heeft. Schep dan ook de spaghetti en garnalen er door.",
-            "Serveer de pasta met wat geraspte parmezaanse kaas. "};
+            "2 plakken ontbijtspek"};
+    private String [] data2 ={"Verwarm de oven op 200 graden.",
+            "Snijd de avocado’s doormidden en verwijder de pit.",
+            "Leg ze in een ovenschaal. ",
+            "Schep met een lepeltje het gat van de pit nog iets dieper. ",
+            "Kluts in iedere avocado een ei. ",
+            "Je kunt ook het ei eerst in een kommetje doen en dan voorzichtig in het gat laten glijden.",
+            "Serveer de pasta met wat geraspte parmezaanse kaas. ",
+                    "Bestrooi met peper, zout en chili. ",
+                    "Snijd het spek in reepjes en verdeel over de avocado’s. ",
+                    "Bak ze 15 minuten in de oven tot het ei gestold is. ",
+                    "Je kunt ze ook iets langer er in laten als je van een harde dooier houd."};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

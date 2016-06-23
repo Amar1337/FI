@@ -28,7 +28,7 @@ import java.util.Arrays;
  * Hella Haanstra, Jaap van Bergeijk and Martijn Stegeman)in designing and debugging my program.
  */
 
-/**
+/*
  * Login activity where the user has the option to login via facebook (API) or register via the registerpage (Firebase API) and
  * to login with the registered account. Every facebook login and firebase login/register are automatically updated in the Firebase
  * database.
@@ -66,12 +66,14 @@ public class LoginActivity extends AppCompatActivity {
                 saveFacebookLoginData("facebook", loginResult.getAccessToken());
             }
 
-            // on cancel stops the callback
+            /* On cancel stops the callback
+             */
             @Override
             public void onCancel() {
             }
 
-            // On error stops the callback
+            /* On error stops the callback
+             */
             @Override
             public void onError(FacebookException error) {
                 Toast.makeText(getApplicationContext(), "" + error.getMessage(), Toast.LENGTH_LONG).show();
@@ -79,7 +81,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // Initialize email, password and progressbar on start of the activity
+    /*Initialize email, password and progressbar on start of the activity
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -89,34 +92,39 @@ public class LoginActivity extends AppCompatActivity {
         checkUserLogin();
     }
 
-    // The method that should be called from the Activity's or Fragment's onActivityResult method.
+    /* The method that should be called from the Activity's or Fragment's onActivityResult method.
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-    // Method for user for setting up user, email and password
+    /* Method for user for setting up user, email and password
+     */
     protected void setUpUser() {
         user = new User();
         user.setEmail(email.getText().toString());
         user.setPassword(password.getText().toString());
     }
 
-    // Intent for going to SignUpActivity
+    /*Intent for going to SignUpActivity
+     */
     public void onSignUpClicked(View view) {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 
-    // Method for login after credentials are verified
+    /* Method for login after credentials are verified
+     */
     public void onLoginClicked(View view) {
         progressBar.setVisibility(View.VISIBLE);
         setUpUser();
         aunthenticateUserLogin();
     }
 
-    // Facebook method for logging in via facebook
+    /* Facebook method for logging in via facebook
+     */
     public void onFacebookLogInClicked( View view ){
         LoginManager
                 .getInstance()
@@ -126,10 +134,11 @@ public class LoginActivity extends AppCompatActivity {
                 );
     }
 
+    /* Method for checking the users login data
+     */
     private void checkUserLogin() {
 
-        // GetAuth Returns the current authentication state of the Firebase client. If the client is unauthenticated, this method will return null.
-        // Otherwise, the return value will be an object containing at least the fields such as uid,provider,token,expires,auth
+        // GetAuth Returns the current authentication state of the Firebase client.
         if (myFirebaseRef.getAuth() != null) {
             Intent intent = new Intent(getApplicationContext(), StartActivity.class);
             String uid = myFirebaseRef.getAuth().getUid();
@@ -139,12 +148,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /* Retrieving input from user from Firebase and verifying it
+     */
     private void aunthenticateUserLogin() {
-        // AuthWithPassword method attempts to authenticate to Firebase with the given credentials.
-        // Parameters Are :
-        // email - The email for the user to authenticate
-        // password - The password for the account
-        // handler - A handler which will be called with the result of the authentication attempt
+        // AuthWithPassword method attempts to authenticate to Firebase with the given credentials with different parameters
         myFirebaseRef.authWithPassword(
                 user.getEmail(),
                 user.getPassword(),
@@ -159,7 +166,8 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                     }
 
-                    // If the authentication fails reply with a toast
+                    /* Method for if the authentication fails reply with a toast
+                     */
                     @Override
                     public void onAuthenticationError(FirebaseError firebaseError) {
                         Toast.makeText(getApplicationContext(), "" + firebaseError.getMessage(), Toast.LENGTH_LONG).show();
@@ -169,7 +177,8 @@ public class LoginActivity extends AppCompatActivity {
         );
     }
 
-    // Method for implementing Facebook with the Firebase database
+    /* Method for implementing Facebook with the Firebase database
+     */
     private void saveFacebookLoginData(String provider, AccessToken accessToken){
         String token=accessToken.getToken();
         setUpUser();
@@ -198,6 +207,8 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                         }
 
+                        /* Method for if the authentication fails reply with a toast
+                         */
                         @Override
                         public void onAuthenticationError(FirebaseError firebaseError) {
 

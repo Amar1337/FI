@@ -43,7 +43,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    // Initialize the following when the user is going to start with account details
+    /*
+    Method for initialising the account details when the user is going to start with account details
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -55,7 +57,9 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
 
-    // Receiving user input
+    /*
+    Method for receiving user input
+     */
     protected void setUpUser(){
         user = new User();
         user.setName(name.getText().toString());
@@ -64,18 +68,18 @@ public class SignUpActivity extends AppCompatActivity {
         user.setPassword(password.getText().toString());
     }
 
-    // Method for when all the details are filled in and the user wants to sign up
+    /*
+    Method for when all the details are filled in and the user wants to sign up
+     */
     public void onSignUpClicked(View view){
         progressBar.setVisibility(View.VISIBLE);
 
         // Using received input from user
         setUpUser();
 
-        // CreateUser method creates a new user account with the given email and password
-        // Parameters are :
-        // Email - The email for the account to be created
-        // Password - The password for the account to be created
-        // Handler - A handler which is called with the result of the operation
+        /*
+        Method for CreateUser creates a new user account with the given email and password with different parameters
+         */
         myFirebaseRef.createUser(
                 user.getEmail(),
                 user.getPassword(),
@@ -91,7 +95,9 @@ public class SignUpActivity extends AppCompatActivity {
                         finish();
                     }
 
-                    // Authenticated failed with error firebaseError
+                    /* Method for
+                    Authenticated failed with error firebaseError
+                     */
                     @Override
                     public void onError(FirebaseError firebaseError) {
                         Toast.makeText(getApplicationContext(), "" + firebaseError.getMessage(), Toast.LENGTH_LONG).show();

@@ -37,7 +37,8 @@ public class CookbookActivity extends Activity {
 
     AsyncTaskLoadFiles myAsyncTaskLoadFiles;
 
-    /* Asynctask to get the files that are being saved in the sd card
+    /*
+    Asynctask to get the files that are being saved in the sd card
      */
     public class AsyncTaskLoadFiles extends AsyncTask<Void, String, Void> {
 
@@ -49,7 +50,8 @@ public class CookbookActivity extends Activity {
             myTaskAdapter = adapter;
         }
 
-        /* Get the path from the sd card where the images are being saved
+        /*
+        Get the path from the sd card where the images are being saved
         */
         @Override
         protected void onPreExecute() {
@@ -63,7 +65,8 @@ public class CookbookActivity extends Activity {
             super.onPreExecute();
         }
 
-        /* Check if the files are actually in the folder
+        /*
+        Check if the files are actually in the folder
         */
         @Override
         protected Void doInBackground(Void... params) {
@@ -75,7 +78,6 @@ public class CookbookActivity extends Activity {
             }
             return null;
         }
-
 
         @Override
         protected void onProgressUpdate(String... values) {
@@ -129,7 +131,8 @@ public class CookbookActivity extends Activity {
             return 0;
         }
 
-        /* Creates a new ImageView for each item referenced by the Adapter
+        /*
+        Creates a new ImageView for each item referenced by the Adapter
          */
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -207,13 +210,14 @@ public class CookbookActivity extends Activity {
         gridview.setAdapter(myImageAdapter);
         gridview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
-            /* A onLongClickListener for deleting items from the gridview.
-            *  Also added a for loop for how to delete every item in the gridview at once.
+            /*
+            A onLongClickListener for deleting items from the gridview.
+            Also added a for loop for how to delete every item in the gridview at once.
             */
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view,
                                            int position, long id) {
-                Toast.makeText(CookbookActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(CookbookActivity.this, "Image removed from gallery", Toast.LENGTH_SHORT).show();
                 // Removes the image from the gridview
                 myImageAdapter.remove(position);
 
@@ -251,22 +255,14 @@ public class CookbookActivity extends Activity {
         myAsyncTaskLoadFiles = new AsyncTaskLoadFiles(myImageAdapter);
         myAsyncTaskLoadFiles.execute();
 
-        // Initialize button + onClickListener
-        Button buttonReload = (Button) findViewById(R.id.reload);
-        buttonReload.setOnClickListener(new OnClickListener() {
+        // Cancel the previous running task, if exist.
+        myAsyncTaskLoadFiles.cancel(true);
 
-            @Override
-            public void onClick(View arg0) {
-
-                // Cancel the previous running task, if exist.
-                myAsyncTaskLoadFiles.cancel(true);
-
-                // New another ImageAdapter, to prevent the adapter have mixed files
-                myImageAdapter = new ImageAdapter(CookbookActivity.this);
-                gridview.setAdapter(myImageAdapter);
-                myAsyncTaskLoadFiles = new AsyncTaskLoadFiles(myImageAdapter);
-                myAsyncTaskLoadFiles.execute();
-            }
-        });
+        // New another ImageAdapter, to prevent the adapter have mixed files
+        myImageAdapter = new ImageAdapter(CookbookActivity.this);
+        gridview.setAdapter(myImageAdapter);
+        myAsyncTaskLoadFiles = new AsyncTaskLoadFiles(myImageAdapter);
+        myAsyncTaskLoadFiles.execute();
     }
 }
+
