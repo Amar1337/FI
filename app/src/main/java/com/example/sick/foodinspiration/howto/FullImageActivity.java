@@ -90,7 +90,8 @@ public class FullImageActivity extends ActionBarActivity {
         ListUtils.setDynamicHeight(mListView2);
     }
 
-    /** ListUtils is a class that add some more effect to the listviews
+    /** 
+     * ListUtils is a class that add some more effect to the listviews
      */
     public static class ListUtils {
         public static void setDynamicHeight(ListView mListView) {
